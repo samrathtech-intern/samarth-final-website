@@ -20,12 +20,12 @@ const trustIndicators = [
 ];
 
 const industriesServed = [
-  'Food manufacturing & processing units',
-  'Dairy, bakery, beverage & catering businesses',
-  'Testing & calibration laboratories',
-  'Inspection bodies & agribusinesses',
-  'Manufacturing & process industries',
-  'Hospitality and institutional food services'
+  { title: 'Food manufacturing & processing units', iconPath: '/icons/factory-icon.png' },
+  { title: 'Dairy, bakery, beverage & catering businesses', iconPath: '/icons/dairy-icon.png' },
+  { title: 'Testing & calibration laboratories', iconPath: '/icons/lab-icon.jpeg' },
+  { title: 'Inspection bodies & agribusinesses', iconPath: '/icons/agri-icon.jpeg' },
+  { title: 'Manufacturing & process industries', iconPath: '/icons/equipment-icon.png' },
+  { title: 'Hospitality and institutional food services', iconPath: '/icons/hospitality-icon.png' }
 ];
 
 const heroCapabilities = ['ISO 9001', 'ISO 22000', 'HACCP', 'BRC', 'FSSAI', 'GMP / GHP'];
@@ -288,9 +288,11 @@ export default function HomePage() {
           />
           <div className="industry-grid">
             {industriesServed.map((industry) => (
-              <div className="industry-card" key={industry}>
-                <span aria-hidden="true" />
-                <strong>{industry}</strong>
+              <div className="industry-card" key={industry.title}>
+                <span className="industry-card-icon" aria-hidden="true">
+                  <img src={industry.iconPath} alt={`${industry.title} icon`} style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
+                </span>
+                <strong>{industry.title}</strong>
               </div>
             ))}
           </div>

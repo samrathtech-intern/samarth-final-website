@@ -1,12 +1,18 @@
 'use client';
 
-import { ImgHTMLAttributes, useEffect, useState } from 'react';
+import { useEffect, useState, CSSProperties } from 'react';
+import Image from 'next/image';
 
-type SafeImageProps = ImgHTMLAttributes<HTMLImageElement> & {
+type SafeImageProps = {
+  src?: string;
   fallbackSrc?: string;
+  alt?: string;
+  className?: string;
+  loading?: 'lazy' | 'eager';
+  style?: CSSProperties;
 };
 
-export function SafeImage({ src, fallbackSrc = '/illustrations/hero-compliance-consulting.svg', alt, ...props }: SafeImageProps) {
+export function SafeImage({ src, fallbackSrc = '/illustrations/hero-compliance-consulting.svg', alt = '', className, loading = 'lazy', style }: SafeImageProps) {
   const [imageSrc, setImageSrc] = useState(src || fallbackSrc);
 
   useEffect(() => {
@@ -15,9 +21,11 @@ export function SafeImage({ src, fallbackSrc = '/illustrations/hero-compliance-c
 
   return (
     <img
-      {...props}
-      src={typeof imageSrc === 'string' ? imageSrc : fallbackSrc}
-      alt={alt || ''}
+      src={imageSrc}
+      alt={alt}
+      className={className}
+      loading={loading}
+      style={{ width: '100%', height: 'auto', objectFit: 'cover', ...style }}
       onError={() => setImageSrc(fallbackSrc)}
     />
   );

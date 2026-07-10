@@ -1332,11 +1332,10 @@ textarea:focus {
   box-shadow: var(--shadow-soft);
 }
 
-.industry-card span {
-  width: 42px;
-  height: 6px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+.industry-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .industry-card strong {
@@ -3522,7 +3521,6 @@ body::before {
 
 .standard-showcase-card span,
 .pillar-icon,
-.industry-card span,
 .outcome-card span,
 .service-family-card span {
   background: linear-gradient(90deg, #D64312, #CF7855);
@@ -6687,9 +6685,179 @@ body.lightbox-open {
   margin-bottom: 0.5rem;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Accessibility for screen readers only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .workflow-content p {
   font-size: 0.95rem;
   color: var(--muted);
   line-height: 1.6;
   margin: 0;
+}
+
+/* ==========================================================================
+   FLOATING CONSULTATION WIDGET
+   ========================================================================== */
+
+.floating-widget-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.floating-widget-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px rgba(214, 67, 18, 0.4);
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.3s ease;
+  animation: floating 4s ease-in-out infinite;
+}
+
+.floating-widget-container.is-open .floating-widget-toggle {
+  background: var(--bg-hover);
+  color: var(--text-main);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: rotate(90deg);
+  animation: none;
+}
+
+.floating-widget-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: bottom right;
+}
+
+.floating-widget-container.is-open .floating-widget-actions {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.widget-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  background: var(--bg-card);
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  white-space: nowrap;
+}
+
+.widget-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: var(--bg-hover);
+}
+
+.widget-btn-icon {
+  font-size: 1.1rem;
+}
+
+.widget-btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  border: none;
+}
+
+.widget-btn-whatsapp:hover {
+  background: #20BA56;
+  color: #fff;
+}
+
+/* Animations */
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-whatsapp {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.pulse-effect {
+  animation: pulse-whatsapp 2s infinite;
+}
+
+/* Mobile Layout Adjustments */
+@media (max-width: 768px) {
+  .floating-widget-container {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .widget-btn-text {
+    display: none;
+  }
+  
+  .widget-btn {
+    padding: 12px;
+    border-radius: 50%;
+    justify-content: center;
+  }
+  
+  .widget-btn-icon {
+    font-size: 1.3rem;
+  }
 }

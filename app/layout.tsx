@@ -5,6 +5,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { RouteTransition } from '@/components/RouteTransition';
 import { Preloader } from '@/components/Preloader';
+import { FloatingWidget } from '@/components/FloatingWidget';
 import { site } from '@/lib/data';
 
 
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         <Header />
         <RouteTransition>{children}</RouteTransition>
+        <FloatingWidget />
         <Footer />
       </body>
     </html>
