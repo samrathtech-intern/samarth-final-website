@@ -44,12 +44,15 @@ const engagementOutcomes = [
   { title: 'Audit-stage confidence', text: 'Pre-audit reviews, evidence tracking and closure support before external assessment.' }
 ];
 
+import { getServiceIconPath } from '@/components/ServiceIcons';
+
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) notFound();
 
   const relatedServices = services.filter((item) => item.slug !== service.slug).slice(0, 5);
+  const iconPath = getServiceIconPath(service.title);
 
   return (
     <>
@@ -70,18 +73,42 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <div className="container service-detail">
           <article className="prose prose-premium service-article">
             <SafeImage src={service.image} alt={`${service.title} visual summary`} className="detail-image" fallbackSrc="/illustrations/hero-compliance-consulting.svg" />
+
+            {/* Overview */}
             <div className="article-card">
               <span className="eyebrow">Overview</span>
               <h2>Practical support for {service.title.toLowerCase()}.</h2>
               {service.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
+
+            {/* What we deliver – bullet list from client content */}
+            {service.bullets && service.bullets.length > 0 && (
+              <div className="article-card article-card-bullets">
+                <span className="eyebrow">What We Deliver</span>
+                <h2>Our consulting scope for {service.title}.</h2>
+                <ul className="service-bullets-list">
+                  {service.bullets.map((bullet) => (
+                    <li key={bullet} className="service-bullet-item">
+                      <span className="bullet-check" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      </span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* How we support you */}
             <div className="article-card article-card-muted">
               <h2>How Samarth Technoologies supports you</h2>
               <p>
                 The engagement can include gap review, documentation, SOP preparation, training, internal audit support, corrective action planning and coordination support for audit readiness.
               </p>
               <div className="mini-step-grid">
-                {implementationSteps.map((step, index) => (
+                {(service.implementationSteps || implementationSteps).map((step, index) => (
                   <div className="mini-step" key={step}>
                     <span>0{index + 1}</span>
                     <strong>{step}</strong>
@@ -89,11 +116,13 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 ))}
               </div>
             </div>
+
+            {/* Expected Outcomes */}
             <div className="article-card outcome-card-wrap">
               <span className="eyebrow">Expected Outcomes</span>
               <h2>Clearer systems your team can maintain after the engagement.</h2>
               <div className="outcome-grid">
-                {engagementOutcomes.map((item) => (
+                {(service.engagementOutcomes || engagementOutcomes).map((item) => (
                   <div className="outcome-card" key={item.title}>
                     <span aria-hidden="true" />
                     <h3>{item.title}</h3>

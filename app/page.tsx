@@ -32,10 +32,10 @@ const heroCapabilities = ['ISO 9001', 'ISO 22000', 'HACCP', 'BRC', 'FSSAI', 'GMP
 
 
 const standardShowcase = [
-  { code: 'ISO', title: 'Management Systems', text: 'ISO 9001, ISO 22000, ISO 45001 and aligned documentation support.' },
-  { code: 'FS', title: 'Food Safety Systems', text: 'HACCP, GMP, GHP, FSSC, BRC and FSSAI/FoSTaC implementation support.' },
-  { code: 'LAB', title: 'Laboratory Readiness', text: 'ISO 17020 and ISO 17025 accreditation preparation for inspection and testing teams.' },
-  { code: 'PLANT', title: 'Plant & Project Support', text: 'Food processing plant, lab setup and practical compliance planning.' }
+  { code: 'ISO', title: 'Management Systems', text: 'ISO 9001, ISO 22000, ISO 45001 and aligned documentation support.', iconPath: '/icons/iso-icon.jpeg' },
+  { code: 'FS', title: 'Food Safety Systems', text: 'HACCP, GMP, GHP, FSSC, BRC and FSSAI/FoSTaC implementation support.', iconPath: '/icons/foodsafety-icon.jpeg' },
+  { code: 'LAB', title: 'Laboratory Readiness', text: 'ISO 17020 and ISO 17025 accreditation preparation for inspection and testing teams.', iconPath: '/icons/lab-icon.jpeg' },
+  { code: 'PLANT', title: 'Plant & Project Support', text: 'Food processing plant, lab setup and practical compliance planning.', iconPath: '/icons/factory-icon.png' }
 ];
 
 const deliveryPillars = [
@@ -180,7 +180,9 @@ export default function HomePage() {
         <div className="container standard-showcase-grid">
           {standardShowcase.map((item) => (
             <article className="standard-showcase-card" key={item.code}>
-              <span>{item.code}</span>
+              <div style={{ marginBottom: '16px' }}>
+                <img src={item.iconPath} alt={`${item.title} icon`} style={{ width: '56px', height: '56px', objectFit: 'contain' }} />
+              </div>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </article>
@@ -188,20 +190,33 @@ export default function HomePage() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="section pillar-section">
+      <AnimatedSection className="section workflow-section">
         <div className="container">
           <SectionHeading
             center
-            eyebrow="Delivery System"
-            title="A consistent consulting system for serious compliance work."
-            text="Every engagement follows a clear system: assess the gaps, build practical documentation, train the team and prepare evidence before the audit stage."
+            eyebrow="Process / Workflow"
+            title="A straightforward path from gap study to certification."
+            text="Every engagement starts with understanding your current systems, then moves through documentation, training, internal audit and certification readiness."
           />
-          <div className="pillar-grid">
-            {deliveryPillars.map((pillar) => (
-              <article className="pillar-card" key={pillar.title}>
-                <span className="pillar-icon" aria-hidden="true">{pillar.icon}</span>
-                <h3>{pillar.title}</h3>
-                <p>{pillar.text}</p>
+          <div className="workflow-grid">
+            {[
+              { num: '01', title: 'Initial Discussion', desc: 'Understanding your business type, certification objective, timeline and current system status.' },
+              { num: '02', title: 'Site Assessment', desc: 'On-site or remote review of your current processes, documentation and compliance maturity.' },
+              { num: '03', title: 'Gap Analysis', desc: 'Identifying gaps between your current systems and the target standard requirements.' },
+              { num: '04', title: 'Project Planning', desc: 'A practical roadmap is prepared with documentation milestones, training schedule and audit dates.' },
+              { num: '05', title: 'Documentation', desc: 'Building quality manuals, SOPs, records, checklists and forms aligned to the chosen standard.' },
+              { num: '06', title: 'Implementation', desc: 'Supporting your team to adopt the system in day-to-day operations with structured guidance.' },
+              { num: '07', title: 'Training', desc: 'Role-wise awareness and competence building so all staff understand their responsibilities.' },
+              { num: '08', title: 'Internal Audit', desc: 'Conducting internal audits to verify system effectiveness and close non-conformities before certification.' },
+              { num: '09', title: 'Certification Support', desc: 'Coordinating with the certification body, reviewing evidence and providing final readiness support.' },
+              { num: '10', title: 'Post-Certification Support', desc: 'Ongoing support for continual improvement, surveillance audits and system maintenance.' }
+            ].map((step) => (
+              <article className="workflow-card" key={step.num}>
+                <span className="workflow-num">{step.num}</span>
+                <div className="workflow-content">
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -282,40 +297,7 @@ export default function HomePage() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="section process-modern-section">
-        <div className="container split split-equal">
-          <div>
-            <SectionHeading
-              eyebrow="Process / Workflow"
-              title="A straightforward path from gap study to certification."
-              text="Every engagement starts with understanding your current systems, then moves through documentation, training, internal audit and certification readiness."
-            />
-            <div className="process-list">
-              {processSteps.map((step, index) => (
-                <div className="process-item" key={step.title}>
-                  <div className="process-index">0{index + 1}</div>
-                  <div>
-                    <h3>{step.title}</h3>
-                    <p>{step.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="panel panel-dark focus-panel">
-            <h3>Core focus areas</h3>
-            <p>Support is tailored around the standards, records, training and teams that matter most to each certification.</p>
-            <div className="info-grid">
-              {trustAreas.map((item) => (
-                <div className="info-card info-card-contrast" key={item}>
-                  <span>Focus Area</span>
-                  <strong>{item}</strong>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </AnimatedSection>
+
 
       <FaqSection />
 

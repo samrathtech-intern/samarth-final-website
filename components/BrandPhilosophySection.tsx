@@ -2,19 +2,19 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 
 const pillars = [
   {
-    icon: '◎',
+    iconPath: '/icons/precision-icon.png',
     title: 'Precision',
     text: 'Accurate systems, documentation and implementation tailored to your exact certification scope and process realities.',
     accent: 'philosophy-accent-1'
   },
   {
-    icon: '⚡',
+    iconPath: '/icons/performance-icon.png',
     title: 'Performance',
     text: 'Practical execution with measurable outcomes — gap studies, records and audit preparation that actually move the needle.',
     accent: 'philosophy-accent-2'
   },
   {
-    icon: '↑',
+    iconPath: '/icons/progress-icon.png',
     title: 'Progress',
     text: 'Continuous improvement and sustainable business growth through systems your team can own and maintain long-term.',
     accent: 'philosophy-accent-3'
@@ -35,7 +35,9 @@ export function BrandPhilosophySection() {
         <div className="philosophy-grid">
           {pillars.map((pillar) => (
             <article className={`philosophy-card ${pillar.accent}`} key={pillar.title}>
-              <div className="philosophy-card-icon" aria-hidden="true">{pillar.icon}</div>
+              <div className="philosophy-card-icon" style={{ background: 'transparent' }} aria-hidden="true">
+                <img src={pillar.iconPath} alt={`${pillar.title} icon`} style={{ width: '64px', height: '64px', objectFit: 'contain' }} />
+              </div>
               <div className="philosophy-card-body">
                 <h3>{pillar.title}</h3>
                 <p>{pillar.text}</p>

@@ -3,11 +3,20 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 import { CTASection } from '@/components/CTASection';
 import { PageHero } from '@/components/PageHero';
 import { SectionHeading } from '@/components/SectionHeading';
-import { site, whyChooseUs } from '@/lib/data';
+import {
+  site,
+  whyChooseUs,
+  industriesServed,
+  businessResults,
+  vision,
+  mission,
+  coreCommitment
+} from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'About Samarth Technoologies, Pune-based food safety, ISO, FSSAI and certification consultancy firm founded by Mr. Amrendra Mahamuni.',
+  description:
+    'About Samarth Technoologies, Pune-based food safety, ISO, FSSAI and certification consultancy firm founded by Mr. Amrendra Mahamuni.',
   alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Samarth Technoologies',
@@ -15,47 +24,30 @@ export const metadata: Metadata = {
   }
 };
 
-
 const approachCards = [
   {
     title: 'Requirement-led consulting',
     text: 'Recommendations are based on actual process gaps, certification scope and operational maturity.',
     num: '01',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-    )
+    icon: <img src="/icons/precision-icon.png" alt="Consulting icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
   },
   {
     title: 'Practical documentation',
     text: 'Documents are designed to be usable by teams, not only presentable during an audit.',
     num: '02',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" />
-      </svg>
-    )
+    icon: <img src="/icons/doc-icon.png" alt="Documentation icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
   },
   {
     title: 'Training-backed adoption',
     text: 'Implementation is supported with awareness, review and role-wise communication.',
     num: '03',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    )
+    icon: <img src="/icons/training-icon.png" alt="Training icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
   },
   {
     title: 'Ethical coordination',
     text: 'Clients receive transparent guidance on certification steps, evidence and responsibilities.',
     num: '04',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
-      </svg>
-    )
+    icon: <img src="/icons/audit-icon.png" alt="Coordination icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
   }
 ];
 
@@ -70,17 +62,18 @@ export default function AboutPage() {
     <>
       <AnimatedSection className="page-hero page-hero-premium page-hero-compact">
         <PageHero
-          eyebrow='Company Profile'
-          title='Food-safety and certification consulting with grounded implementation support.'
-          text='Samarth Technoologies helps growing organisations build practical ISO, FSSAI, HACCP, BRC and accreditation systems through clear documentation, training and review-led delivery.'
-          image='/assets/brand/food-safety-training-hero.webp'
-          imageAlt='Food safety training and consulting session'
+          eyebrow="Company Profile"
+          title="Food-safety and certification consulting with grounded implementation support."
+          text="Samarth Technoologies helps growing organisations build practical ISO, FSSAI, HACCP, BRC and accreditation systems through clear documentation, training and review-led delivery."
+          image="/assets/brand/food-safety-training-hero.webp"
+          imageAlt="Food safety training and consulting session"
           badges={['Pune-based consultancy', 'QCI member firm', 'FoSTaC training expertise']}
-          proofTitle='Company strengths'
+          proofTitle="Company strengths"
           proofItems={['Food technology', 'Certification planning', 'Practical records']}
         />
       </AnimatedSection>
 
+      {/* Company intro */}
       <AnimatedSection className="section">
         <div className="container split">
           <div>
@@ -117,6 +110,48 @@ export default function AboutPage() {
         </div>
       </AnimatedSection>
 
+      {/* Vision & Mission */}
+      <AnimatedSection className="section section-soft">
+        <div className="container">
+          <SectionHeading
+            center
+            eyebrow="Our Direction"
+            title="Vision, Mission &amp; Core Commitment"
+            text="What we stand for and where we are headed as India's trusted food industry consulting partner."
+          />
+          <div className="vision-mission-grid">
+            <div className="panel vision-card">
+              <span className="panel-kicker">Vision</span>
+              <h3>Our Vision</h3>
+              <p>{vision}</p>
+            </div>
+            <div className="panel mission-card">
+              <span className="panel-kicker">Mission</span>
+              <h3>Our Mission</h3>
+              <p className="mission-intro">At Samarth Technoologies, our mission is to enable food businesses to achieve operational excellence and sustainable growth by delivering practical, reliable, and value-driven consulting services. We are committed to:</p>
+              <ul className="mission-list">
+                {mission.map((item) => (
+                  <li key={item} className="mission-item">
+                    <span className="mission-bullet" aria-hidden="true">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="core-commitment-banner">
+            <span className="commitment-quote" aria-hidden="true">&ldquo;</span>
+            <p className="commitment-text">{coreCommitment}</p>
+            <span className="commitment-quote commitment-quote-close" aria-hidden="true">&rdquo;</span>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* Approach */}
       <AnimatedSection className="section approach-section">
         <div className="container">
           <SectionHeading
@@ -140,6 +175,7 @@ export default function AboutPage() {
         </div>
       </AnimatedSection>
 
+      {/* Milestones */}
       <AnimatedSection className="section section-soft">
         <div className="container timeline-grid">
           {milestones.map((item) => (
@@ -152,6 +188,7 @@ export default function AboutPage() {
         </div>
       </AnimatedSection>
 
+      {/* Why Choose Us */}
       <AnimatedSection className="section">
         <div className="container split split-equal">
           <div className="panel founder-panel">
@@ -162,7 +199,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="panel">
-            <h3>Why Prefer Samarth Technoologies?</h3>
+            <h3>Why Choose Our Consulting Services?</h3>
             <ul className="clean-list">
               {whyChooseUs.map((item) => <li key={item}>{item}</li>)}
             </ul>
@@ -170,6 +207,49 @@ export default function AboutPage() {
         </div>
       </AnimatedSection>
 
+      {/* Industries We Serve */}
+      <AnimatedSection className="section section-soft">
+        <div className="container">
+          <SectionHeading
+            center
+            eyebrow="Industries We Serve"
+            title="Serving 18 industries across the food and allied sectors."
+            text="Our consulting expertise spans the entire food value chain and allied industries."
+          />
+          <div className="industries-grid">
+            {industriesServed.map((industry) => (
+              <div className="industry-chip" key={industry.name}>
+                <span className="industry-icon" aria-hidden="true">
+                  <IndustryIcon name={industry.icon} />
+                </span>
+                <span className="industry-name">{industry.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* Results Your Business Can Expect */}
+      <AnimatedSection className="section">
+        <div className="container">
+          <SectionHeading
+            center
+            eyebrow="Business Results"
+            title="Results Your Business Can Expect"
+            text="Measurable outcomes that our clients achieve through our consulting engagement."
+          />
+          <div className="results-grid">
+            {businessResults.map((result, index) => (
+              <div className="result-card" key={result}>
+                <span className="result-number">{String(index + 1).padStart(2, '0')}</span>
+                <p className="result-text">{result}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* Qualifications */}
       <AnimatedSection className="section section-soft">
         <div className="container split">
           <div className="panel">
@@ -183,6 +263,7 @@ export default function AboutPage() {
         </div>
       </AnimatedSection>
 
+      {/* Special Credentials */}
       <AnimatedSection className="section">
         <div className="container">
           <SectionHeading
@@ -192,12 +273,16 @@ export default function AboutPage() {
           />
           <div className="credentials-highlight-grid">
             <div className="credential-highlight-card">
-              <span className="credential-highlight-icon" aria-hidden="true">★</span>
+              <span className="credential-highlight-icon" aria-hidden="true">
+                <img src="/icons/msme-zed-icon.jpeg" alt="MSME ZED Assessor" style={{ width: '48px', height: '48px', objectFit: 'contain' }} />
+              </span>
               <h3>MSME ZED &amp; LEAN Assessor</h3>
               <p>Certified assessor under the MSME Zero Effect Zero Defect (ZED) scheme, Government of India.</p>
             </div>
             <div className="credential-highlight-card">
-              <span className="credential-highlight-icon" aria-hidden="true">🇺🇸</span>
+              <span className="credential-highlight-icon" aria-hidden="true">
+                <img src="/icons/🇺🇸-fda-icon.jpeg" alt="US FDA PCQI" style={{ width: '48px', height: '48px', objectFit: 'contain' }} />
+              </span>
               <h3>PCQI – US FDA Approved</h3>
               <p>Preventive Controls Qualified Individual (PCQI) approved by the US Food &amp; Drug Administration for human food.</p>
             </div>
@@ -213,4 +298,29 @@ export default function AboutPage() {
       <CTASection />
     </>
   );
+}
+
+// Inline SVG icon switcher for industries
+function IndustryIcon({ name }: { name: string }) {
+  const icons: Record<string, React.ReactNode> = {
+    factory: <img src="/icons/factory-icon.png" alt="Factory icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    dairy: <img src="/icons/dairy-icon.png" alt="Dairy icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    beverage: <img src="/icons/beverage-icon.png" alt="Beverage icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    bakery: <img src="/icons/bakery-ico.jpeg" alt="Bakery icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    oils: <img src="/icons/oils-icon.png" alt="Oils icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    spices: <img src="/icons/spices-icon.png" alt="Spices icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    seafood: <img src="/icons/seafood-icon.png" alt="Seafood icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    meat: <img src="/icons/meat-icon.jpeg" alt="Meat icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    nutra: <img src="/icons/nutra-icon.png" alt="Nutra icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    cosmetics: <img src="/icons/cosmetics-icon.png" alt="Cosmetics icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    packaging: <img src="/icons/packaging-icon.png" alt="Packaging icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    chemical: <img src="/icons/chemical-icon.png" alt="Chemical icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    lab: <img src="/icons/lab-icon.jpeg" alt="Lab icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    inspection: <img src="/icons/audit-icon.png" alt="Inspection icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    logistics: <img src="/icons/logistics-icon.png" alt="Logistics icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    agriculture: <img src="/icons/agri-icon.jpeg" alt="Agriculture icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    hospitality: <img src="/icons/hospitality-icon.png" alt="Hospitality icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
+    manufacturing: <img src="/icons/factory-icon.png" alt="Manufacturing icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+  };
+  return <>{icons[name] ?? icons['factory']}</>;
 }

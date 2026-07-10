@@ -1,18 +1,19 @@
 import Link from 'next/link';
-import { SafeImage } from '@/components/SafeImage';
+import { getServiceIconPath } from '@/components/ServiceIcons';
 import type { Service } from '@/lib/data';
 
 export function ServiceCard({ service, category }: { service: Service; category?: string }) {
   const chipLabel = category || 'Consultancy';
+  const iconPath = getServiceIconPath(service.title);
 
   const cardInner = (
     <>
-      <div className="service-image-wrap">
-        <SafeImage src={service.image} alt={service.title} className="service-image" loading="lazy" fallbackSrc="/illustrations/hero-compliance-consulting.svg" />
-      </div>
-      <div className="service-card-body">
+      <div className="service-card-body service-card-icon-layout">
         <div className="service-card-meta">
           <span className="chip">{chipLabel}</span>
+        </div>
+        <div className="service-icon-container" style={{ background: 'transparent' }}>
+          <img src={iconPath} alt={`${service.title} icon`} style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
         </div>
         <h3>{service.title}</h3>
         <p>{service.short}</p>
