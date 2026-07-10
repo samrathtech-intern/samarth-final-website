@@ -14,9 +14,11 @@ build/
 .turbo/
 .cache/
 
-# environment files
+# environment files — .env.local holds real secrets, NEVER commit it
 .env
-.env.*
+.env.local
+.env.*.local
+# allow example files to be committed so others know what vars are needed
 !.env.example
 !.env.local.example
 
@@ -47,5 +49,3 @@ releases/
 
 # TypeScript incremental cache
 *.tsbuildinfo
-
-.vercel
