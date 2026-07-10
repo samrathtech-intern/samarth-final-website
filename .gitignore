@@ -1,0 +1,51 @@
+# dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Next.js
+.next/
+out/
+
+# production/build outputs
+dist/
+build/
+.vercel/
+.turbo/
+.cache/
+
+# environment files
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# electron-builder and packaging artifacts
+.electron-builder-cache/
+.build-obfuscated/
+builder-effective-config.yaml
+release/
+releases/
+*.blockmap
+*.asar
+*.exe
+*.msi
+*.dmg
+*.AppImage
+
+# TypeScript incremental cache
+*.tsbuildinfo
+
+.vercel

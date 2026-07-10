@@ -1,0 +1,13 @@
+{
+  "name": "SAMARTH TECHNOOLOGIES",
+  "short_name": "Samarth",
+  "description": "Food safety, ISO and certification consultancy from Pune.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5EBDD",
+  "theme_color": "#D64312",
+  "icons": [
+    { "src": "/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/brand/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

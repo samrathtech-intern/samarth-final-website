@@ -1,0 +1,12 @@
+.env
+.env.*
+node_modules
+.next
+out
+dist
+build
+.cache
+.turbo
+.electron-builder-cache
+.build-obfuscated
+builder-effective-config.yaml
