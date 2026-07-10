@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-const STARTING_VIEW_COUNT = 18132;
+const STARTING_VIEW_COUNT = 1;
 const SESSION_KEY = 'samarth-technoologies-view-counted';
 
 type CounterPayload = {

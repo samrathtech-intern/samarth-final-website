@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-const DEFAULT_VIEW_COUNT_SEED = 18132;
+const DEFAULT_VIEW_COUNT_SEED = 1;
 const VIEW_COUNTER_KEY = process.env.VIEW_COUNTER_KEY || 'samarth-technoologies:visitor-count';
 const VIEW_COUNTER_SEED = Number(process.env.VIEW_COUNTER_SEED || DEFAULT_VIEW_COUNT_SEED);
 
