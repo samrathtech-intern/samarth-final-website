@@ -7,10 +7,8 @@ import { RouteTransition } from '@/components/RouteTransition';
 import { Preloader } from '@/components/Preloader';
 import { FloatingWidget } from '@/components/FloatingWidget';
 import { site } from '@/lib/data';
-
-
 export const viewport: Viewport = {
-  themeColor: '#D64312',
+  themeColor: '#369694',
   colorScheme: 'light'
 };
 
@@ -77,6 +75,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet" />
+      </head>
       <body suppressHydrationWarning>
         <Preloader />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />

@@ -7,12 +7,14 @@ export function Footer() {
   const footerServices = services.filter((s) => s.slug).slice(0, 6);
   return (
     <footer className="footer">
-      <div className="container footer-cta-strip">
-        <div>
-          <span className="panel-kicker">Need certification support?</span>
-          <strong>Start with a focused gap review and clear implementation plan.</strong>
+      <div className="footer-cta-strip">
+        <div className="container footer-cta-inner">
+          <div>
+            <span className="panel-kicker">Need certification support?</span>
+            <strong>Start with a focused gap review and clear implementation plan.</strong>
+          </div>
+          <Link href="/contact" className="btn btn-light">Send Enquiry</Link>
         </div>
-        <Link href="/contact" className="btn btn-light">Send Enquiry</Link>
       </div>
 
       <div className="container footer-grid">
