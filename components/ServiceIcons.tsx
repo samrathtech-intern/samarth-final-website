@@ -28,7 +28,7 @@ export function getServiceIconPath(title: string): string {
   if (t.includes('lab')) return '/icons/lab-icon.jpeg';
   if (t.includes('factory') || t.includes('plant')) return '/icons/factory-icon.png';
   if (t.includes('document')) return '/icons/doc-icon.png';
-  if (t.includes('equipment') || t.includes('machine')) return '/icons/equipment-icon.png';
+  if (t.includes('equipment') || t.includes('machine')) return '/icons/food_process.jpeg';
   if (t.includes('sustain') || t.includes('environment')) return '/icons/sustanability-icon.png';
   if (t.includes('safety')) return '/icons/foodsafety-icon.jpeg';
 

@@ -13,7 +13,7 @@ export function ServiceCard({ service, category }: { service: Service; category?
           <span className="chip">{chipLabel}</span>
         </div>
         <div className="service-icon-container" style={{ background: 'transparent' }}>
-          <img src={iconPath} alt={`${service.title} icon`} style={{ width: '72px', height: '72px', objectFit: 'contain' }} />
+          <img src={iconPath} alt={`${service.title} icon`} style={{ width: '96px', height: '96px', objectFit: 'contain' }} />
         </div>
         <h3>{service.title}</h3>
         <p>{service.short}</p>

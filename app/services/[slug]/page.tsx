@@ -63,9 +63,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           text={service.short}
           image={service.image}
           imageAlt={`${service.title} service visual`}
-          badges={service.highlights.slice(0, 4)}
-          proofTitle="Engagement focus"
-          proofItems={["Scope", "Records", "Training"]}
+          badges={service.highlights.slice(0, 5)}
         />
       </AnimatedSection>
 
@@ -144,7 +142,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             <div className="panel enquiry-panel">
               <h3>Need a quotation?</h3>
               <p>Share your requirement, company type, location and target certification.</p>
-              <div className="sidebar-mini-points"><span>Scope review</span><span>Timeline discussion</span><span>Documentation path</span></div>
+              <div className="sidebar-mini-points">
+                <span>Scope review</span>
+                <span>Timeline discussion</span>
+                <span>Documentation path</span></div>
               <a className="btn btn-primary" href={`mailto:${site.email}?subject=${encodeURIComponent(service.title + ' enquiry')}`}>Send Enquiry</a>
             </div>
             <div className="panel">

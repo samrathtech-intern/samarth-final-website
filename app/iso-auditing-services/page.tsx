@@ -25,15 +25,15 @@ export const metadata: Metadata = {
 };
 
 const auditIcons: Record<string, React.ReactNode> = {
-  qms: <img src="/icons/iso-icon.jpeg" alt="QMS icon" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />,
-  food: <img src="/icons/fssai-icon.jpg" alt="Food safety icon" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />,
-  env: <img src="/icons/sustanability-icon.png" alt="Environment icon" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />,
-  ohs: <img src="/icons/audit-icon.png" alt="OH&S icon" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />,
-  energy: <img src="/icons/factory-icon.png" alt="Energy icon" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />,
-  medical: <img src="/icons/doc-icon.png" alt="Medical icon" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />,
-  infosec: <img src="/icons/doc-icon.png" alt="InfoSec icon" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />,
-  lab: <img src="/icons/lab-icon.jpeg" alt="Lab icon" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />,
-  inspection: <img src="/icons/audit-icon.png" alt="Inspection icon" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+  qms: <img src="/icons/iso-icon.jpeg" alt="QMS icon" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />,
+  food: <img src="/icons/fssai-icon.jpg" alt="Food safety icon" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />,
+  env: <img src="/icons/sustanability-icon.png" alt="Environment icon" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />,
+  ohs: <img src="/icons/audit-icon.png" alt="OH&S icon" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />,
+  energy: <img src="/icons/factory-icon.png" alt="Energy icon" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />,
+  medical: <img src="/icons/doc-icon.png" alt="Medical icon" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />,
+  infosec: <img src="/icons/doc-icon.png" alt="InfoSec icon" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />,
+  lab: <img src="/icons/lab-icon.jpeg" alt="Lab icon" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />,
+  inspection: <img src="/icons/audit-icon.png" alt="Inspection icon" style={{ width: '70px', height: '70px', objectFit: 'contain' }} />
 };
 
 export default function IsoAuditingServicesPage() {
@@ -44,11 +44,9 @@ export default function IsoAuditingServicesPage() {
           eyebrow="Professional Audit Services"
           title="ISO Management Systems Auditing Services"
           text="Professional First-Party, Second-Party and Pre-Certification Audits across all major ISO management system standards – aligned with ISO 19011 guidelines and focused on business improvement."
-          image="/assets/brand/food-testing-lab-hero.webp"
+          image="/assets/audit.jpeg"
           imageAlt="ISO management systems auditing professional services"
           badges={['ISO 19011 aligned', 'Lead auditor expertise', 'All major standards', 'Gap-to-certification']}
-          proofTitle="Audit scope"
-          proofItems={['Gap Analysis', 'Evidence Review', 'CAPA Support']}
         />
       </AnimatedSection>
 

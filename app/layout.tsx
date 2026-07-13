@@ -6,9 +6,10 @@ import { Footer } from '@/components/Footer';
 import { RouteTransition } from '@/components/RouteTransition';
 import { Preloader } from '@/components/Preloader';
 import { FloatingWidget } from '@/components/FloatingWidget';
+import { TrustedByMarquee } from '@/components/TrustedByMarquee';
 import { site } from '@/lib/data';
 export const viewport: Viewport = {
-  themeColor: '#369694',
+  themeColor: '#0F172A',
   colorScheme: 'light'
 };
 
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Header />
         <RouteTransition>{children}</RouteTransition>
         <FloatingWidget />
+        <TrustedByMarquee />
         <Footer />
       </body>
     </html>

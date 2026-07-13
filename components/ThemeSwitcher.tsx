@@ -8,12 +8,12 @@ const themes = [
     colors: {
       "--brand": "#89FF00",
       "--brand-dark": "#A3FF00",
-      "--ink": "var(--ink)",
+      "--ink": "#111827",
       "--muted": "#6B7280",
       "--bg": "#FFFFFF",
       "--surface": "#FFFFFF",
       "--line": "#E5E7EB",
-      "--footer-bg": "var(--ink)",
+      "--footer-bg": "#111827",
       "--surface-soft": "#F3F4F6",
       "--surface-soft-2": "#E5E7EB",
       "--brand-text": "#111827"
@@ -24,7 +24,7 @@ const themes = [
     colors: {
       "--brand": "#16A34A",
       "--brand-dark": "#22C55E",
-      "--ink": "var(--ink)",
+      "--ink": "#111827",
       "--muted": "#4B5563",
       "--bg": "#FFFFFF",
       "--surface": "#FFFFFF",
@@ -38,16 +38,16 @@ const themes = [
   {
     name: "Navy + Orange",
     colors: {
-      "--brand": "#0F4C81",
-      "--brand-dark": "#FB923C",
-      "--ink": "#1F2937",
-      "--muted": "#4B5563",
-      "--bg": "#F8FAFC",
+      "--brand": "#0F172A",
+      "--brand-dark": "#EA580C",
+      "--ink": "#111827",
+      "--muted": "#374151",
+      "--bg": "#FFFFFF",
       "--surface": "#FFFFFF",
-      "--line": "#DDE5E3",
-      "--footer-bg": "#102A43",
-      "--surface-soft": "#EA580C",
-      "--surface-soft-2": "#C2410C",
+      "--line": "#E5E7EB",
+      "--footer-bg": "#0F172A",
+      "--surface-soft": "#F8FAFC",
+      "--surface-soft-2": "#F1F5F9",
       "--brand-text": "#FFFFFF"
     }
   },
@@ -61,7 +61,7 @@ const themes = [
       "--bg": "#FAFAFA",
       "--surface": "#FFFFFF",
       "--line": "#E5E5E5",
-      "--footer-bg": "var(--ink)",
+      "--footer-bg": "#2D2D2D",
       "--surface-soft": "#B45309",
       "--surface-soft-2": "#92400E",
       "--brand-text": "#FFFFFF"
@@ -72,7 +72,7 @@ const themes = [
     colors: {
       "--brand": "#0F766E",
       "--brand-dark": "#14B8A6",
-      "--ink": "var(--ink)",
+      "--ink": "#111827",
       "--muted": "#4B5563",
       "--bg": "#FFFFFF",
       "--surface": "#FFFFFF",

@@ -34,8 +34,7 @@ export default function ServicesPage() {
           image='/assets/brand/food-processing-hero.webp'
           imageAlt='Food processing plant consulting support'
           badges={['ISO systems', 'Food safety', 'Laboratory readiness', 'Training']}
-          proofTitle='Service flow'
-          proofItems={['Gap review', 'Documentation', 'Training', 'Review']}
+
         />
       </AnimatedSection>
 

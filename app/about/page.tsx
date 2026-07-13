@@ -29,25 +29,25 @@ const approachCards = [
     title: 'Requirement-led consulting',
     text: 'Recommendations are based on actual process gaps, certification scope and operational maturity.',
     num: '01',
-    icon: <img src="/icons/precision-icon.png" alt="Consulting icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+    icon: <img src="/icons/precision-icon.png" alt="Consulting icon" style={{ width: '28px', height: '38px', objectFit: 'contain' }} />
   },
   {
     title: 'Practical documentation',
     text: 'Documents are designed to be usable by teams, not only presentable during an audit.',
     num: '02',
-    icon: <img src="/icons/doc-icon.png" alt="Documentation icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+    icon: <img src="/icons/doc-icon.png" alt="Documentation icon" style={{ width: '38px', height: '28px', objectFit: 'contain' }} />
   },
   {
     title: 'Training-backed adoption',
     text: 'Implementation is supported with awareness, review and role-wise communication.',
     num: '03',
-    icon: <img src="/icons/training-icon.png" alt="Training icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+    icon: <img src="/icons/training-icon.png" alt="Training icon" style={{ width: '38px', height: '28px', objectFit: 'contain' }} />
   },
   {
     title: 'Ethical coordination',
     text: 'Clients receive transparent guidance on certification steps, evidence and responsibilities.',
     num: '04',
-    icon: <img src="/icons/audit-icon.png" alt="Coordination icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+    icon: <img src="/icons/audit-icon.png" alt="Coordination icon" style={{ width: '38px', height: '28px', objectFit: 'contain' }} />
   }
 ];
 
@@ -68,8 +68,6 @@ export default function AboutPage() {
           image="/assets/brand/food-safety-training-hero.webp"
           imageAlt="Food safety training and consulting session"
           badges={['Pune-based consultancy', 'QCI member firm', 'FoSTaC training expertise']}
-          proofTitle="Company strengths"
-          proofItems={['Food technology', 'Certification planning', 'Practical records']}
         />
       </AnimatedSection>
 
@@ -122,12 +120,11 @@ export default function AboutPage() {
           <div className="vision-mission-grid">
             <div className="panel vision-card">
               <span className="panel-kicker">Vision</span>
-              <h3>Our Vision</h3>
               <p>{vision}</p>
             </div>
             <div className="panel mission-card">
               <span className="panel-kicker">Mission</span>
-              <h3>Our Mission</h3>
+              <br></br>
               <p className="mission-intro">At Samarth Technoologies, our mission is to enable food businesses to achieve operational excellence and sustainable growth by delivering practical, reliable, and value-driven consulting services. We are committed to:</p>
               <ul className="mission-list">
                 {mission.map((item) => (
@@ -235,7 +232,7 @@ export default function AboutPage() {
           <SectionHeading
             center
             eyebrow="Business Results"
-            title="Results Your Business Can Expect"
+            title="Outcomes That Drive Growth"
             text="Measurable outcomes that our clients achieve through our consulting engagement."
           />
           <div className="results-grid">
@@ -274,20 +271,22 @@ export default function AboutPage() {
           <div className="credentials-highlight-grid">
             <div className="credential-highlight-card">
               <span className="credential-highlight-icon" aria-hidden="true">
-                <img src="/icons/msme-zed-icon.jpeg" alt="MSME ZED Assessor" style={{ width: '48px', height: '48px', objectFit: 'contain' }} />
+                <img src="/icons/msme-zed-icon.jpeg" alt="MSME ZED Assessor" style={{ width: '90px', height: '90px', objectFit: 'contain' }} />
               </span>
               <h3>MSME ZED &amp; LEAN Assessor</h3>
               <p>Certified assessor under the MSME Zero Effect Zero Defect (ZED) scheme, Government of India.</p>
             </div>
             <div className="credential-highlight-card">
               <span className="credential-highlight-icon" aria-hidden="true">
-                <img src="/icons/🇺🇸-fda-icon.jpeg" alt="US FDA PCQI" style={{ width: '48px', height: '48px', objectFit: 'contain' }} />
+                <img src="/icons/🇺🇸-fda-icon.jpeg" alt="US FDA PCQI" style={{ width: '90px', height: '90px', objectFit: 'contain' }} />
               </span>
               <h3>PCQI – US FDA Approved</h3>
               <p>Preventive Controls Qualified Individual (PCQI) approved by the US Food &amp; Drug Administration for human food.</p>
             </div>
             <div className="credential-highlight-card">
-              <span className="credential-highlight-icon" aria-hidden="true">🏛</span>
+              <span className="credential-highlight-icon" aria-hidden="true">
+                <img src="/icons/mh.jpeg" alt="Association" style={{ width: '90px', height: '90px', objectFit: 'contain' }} />
+              </span>
               <h3>Director – Maharashtra Ayurved FBO Association</h3>
               <p>Director, Maharashtra Ayurved Food Business Operators Association — supporting the sector with compliance expertise.</p>
             </div>
@@ -303,24 +302,24 @@ export default function AboutPage() {
 // Inline SVG icon switcher for industries
 function IndustryIcon({ name }: { name: string }) {
   const icons: Record<string, React.ReactNode> = {
-    factory: <img src="/icons/factory-icon.png" alt="Factory icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    dairy: <img src="/icons/dairy-icon.png" alt="Dairy icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    beverage: <img src="/icons/beverage-icon.png" alt="Beverage icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    bakery: <img src="/icons/bakery-ico.jpeg" alt="Bakery icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    oils: <img src="/icons/oils-icon.png" alt="Oils icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    spices: <img src="/icons/spices-icon.png" alt="Spices icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    seafood: <img src="/icons/seafood-icon.png" alt="Seafood icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    meat: <img src="/icons/meat-icon.jpeg" alt="Meat icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    nutra: <img src="/icons/nutra-icon.png" alt="Nutra icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    cosmetics: <img src="/icons/cosmetics-icon.png" alt="Cosmetics icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    packaging: <img src="/icons/packaging-icon.png" alt="Packaging icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    chemical: <img src="/icons/chemical-icon.png" alt="Chemical icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    lab: <img src="/icons/lab-icon.jpeg" alt="Lab icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    inspection: <img src="/icons/audit-icon.png" alt="Inspection icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    logistics: <img src="/icons/logistics-icon.png" alt="Logistics icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    agriculture: <img src="/icons/agri-icon.jpeg" alt="Agriculture icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    hospitality: <img src="/icons/hospitality-icon.png" alt="Hospitality icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />,
-    manufacturing: <img src="/icons/factory-icon.png" alt="Manufacturing icon" style={{ width: '28px', height: '28px', objectFit: 'contain' }} />
+    factory: <img src="/icons/factory-icon.png" alt="Factory icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    dairy: <img src="/icons/dairy-icon.png" alt="Dairy icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    beverage: <img src="/icons/beverage-icon.png" alt="Beverage icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    bakery: <img src="/icons/bakery-ico.jpeg" alt="Bakery icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    oils: <img src="/icons/oils-icon.png" alt="Oils icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    spices: <img src="/icons/spices-icon.png" alt="Spices icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    seafood: <img src="/icons/seafood-icon.png" alt="Seafood icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    meat: <img src="/icons/meat-icon.jpeg" alt="Meat icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    nutra: <img src="/icons/nutra-icon.png" alt="Nutra icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    cosmetics: <img src="/icons/cosmetics-icon.png" alt="Cosmetics icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    packaging: <img src="/icons/packaging-icon.png" alt="Packaging icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    chemical: <img src="/icons/chemical-icon.png" alt="Chemical icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    lab: <img src="/icons/lab-icon.jpeg" alt="Lab icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    inspection: <img src="/icons/audit-icon.png" alt="Inspection icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    logistics: <img src="/icons/logistics-icon.png" alt="Logistics icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    agriculture: <img src="/icons/agri-icon.jpeg" alt="Agriculture icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    hospitality: <img src="/icons/hospitality-icon.png" alt="Hospitality icon" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />,
+    manufacturing: <img src="/icons/factory-icon.png" alt="Manufacturing icon" style={{ width: '38px', height: '28px', objectFit: 'contain' }} />
   };
   return <>{icons[name] ?? icons['factory']}</>;
 }

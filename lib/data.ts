@@ -18,7 +18,9 @@ export const site = {
   established: '2015',
   consultants: '24',
   whatsapp: 'https://wa.me/919595888000',
-  linkedin: 'https://www.linkedin.com/company/samarth-technoologies'
+  linkedin: 'https://www.linkedin.com/in/ft-amrendra-mahamuni-96544641/',
+  contact_no1: '8799974926',
+  contact_no2: '9595888000'
 };
 
 export type Service = {
@@ -684,7 +686,7 @@ export const industriesServed = [
   { name: 'Edible Oils', icon: 'oils' },
   { name: 'Spices & Seasonings', icon: 'spices' },
   { name: 'Seafood', icon: 'seafood' },
-  { name: 'Meat & Poultry', icon: 'meat' },
+  { name: 'Meat,Fish & Poultry', icon: 'meat' },
   { name: 'Nutraceuticals & Health Supplements', icon: 'nutra' },
   { name: 'Cosmetics', icon: 'cosmetics' },
   { name: 'Packaging Materials', icon: 'packaging' },
@@ -694,7 +696,6 @@ export const industriesServed = [
   { name: 'Warehousing & Logistics', icon: 'logistics' },
   { name: 'Agriculture & Primary Production', icon: 'agriculture' },
   { name: 'Hospitality & Catering', icon: 'hospitality' },
-  { name: 'Manufacturing Industries', icon: 'manufacturing' }
 ];
 
 // ── BUSINESS RESULTS (10 results – client approved) ───────────────────────────
@@ -814,20 +815,6 @@ export const auditStandardCategories = [
     ]
   },
   {
-    category: 'Medical Devices',
-    icon: 'medical',
-    standards: [
-      {
-        name: 'ISO 13485 – Medical Device Quality Management',
-        points: [
-          'Medical device regulatory compliance verification.',
-          'Risk management assessment.',
-          'Process validation audits.'
-        ]
-      }
-    ]
-  },
-  {
     category: 'Information Security',
     icon: 'infosec',
     standards: [
@@ -926,10 +913,6 @@ export const galleryItems = [
   { src: '/assets/gallery/gallery-09.webp', title: 'Food Safety Workshop Group', tag: 'Workshop', category: 'Training' },
   { src: '/assets/gallery/gallery-10.webp', title: 'Plant Process Review', tag: 'Process Review', category: 'Plant Visits' },
   { src: '/assets/gallery/gallery-11.webp', title: 'Awareness Program Delivery', tag: 'Training', category: 'Training' },
-  // Chitale Industry
-  { src: '/assets/chitale/chitale.jpeg', title: 'Chitale Industry', tag: 'Chitale', category: 'Chitale Industry' },
-  { src: '/assets/chitale/chitale2.jpeg', title: 'Chitale Industry', tag: 'Chitale', category: 'Chitale Industry' },
-  { src: '/assets/chitale/chitale3.jpeg', title: 'Chitale Industry', tag: 'Chitale', category: 'Chitale Industry' },
   // Factory Visits
   { src: '/assets/factory/factory.jpeg', title: 'Factory Visit', tag: 'Factory', category: 'Factory Visits' },
   { src: '/assets/factory/factory1.jpeg', title: 'Factory Visit', tag: 'Factory', category: 'Factory Visits' },

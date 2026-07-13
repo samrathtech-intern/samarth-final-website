@@ -25,7 +25,7 @@ export function SafeImage({ src, fallbackSrc = '/illustrations/hero-compliance-c
       alt={alt}
       className={className}
       loading={loading}
-      style={{ width: '100%', height: 'auto', objectFit: 'cover', ...style }}
+      style={style}
       onError={() => setImageSrc(fallbackSrc)}
     />
   );

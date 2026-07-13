@@ -8,10 +8,7 @@ export function CTASection() {
       <div className="container cta-card">
         <div>
           <span className="eyebrow">Ready to become audit-ready?</span>
-          <h2>Share your certification goal. We’ll help you plan the next practical step.</h2>
-          <p>
-            Tell us your business type, current system, target standard and timeline. We will respond with a focused path for documentation, training and audit readiness.
-          </p>
+          <h2>Tell us your certification goal, and we'll guide you toward the right next step.</h2>
         </div>
         <div className="cta-actions">
           <Link href="/contact" className="btn btn-light">Contact Us</Link>

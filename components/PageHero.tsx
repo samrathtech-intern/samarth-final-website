@@ -11,14 +11,14 @@ type PageHeroProps = {
   proofItems?: string[];
 };
 
-export function PageHero({ eyebrow, title, text, image, imageAlt, badges = [], proofTitle = 'Focused delivery', proofItems = [] }: PageHeroProps) {
+export function PageHero({ eyebrow, title, text, image, imageAlt, badges = [], proofTitle, proofItems = [] }: PageHeroProps) {
   return (
     <div className="container page-hero-grid">
       <div className="page-hero-copy">
         <span className="eyebrow">{eyebrow}</span>
         <h1>{title}</h1>
         <p>{text}</p>
-        {badges.length ? (
+        {badges.length > 0 ? (
           <div className="page-hero-badges" aria-label="Page highlights">
             {badges.map((badge) => <span key={badge}>{badge}</span>)}
           </div>
@@ -31,14 +31,16 @@ export function PageHero({ eyebrow, title, text, image, imageAlt, badges = [], p
         ) : (
           <div className="page-hero-sigil"><span>समर्थ</span></div>
         )}
-        <div className="page-hero-proof-card">
-          <span>{proofTitle}</span>
-          <div>
-            {(proofItems.length ? proofItems : ['Gap review', 'Documentation', 'Training']).map((item) => (
-              <strong key={item}>{item}</strong>
-            ))}
+        {proofTitle && proofItems.length > 0 && (
+          <div className="page-hero-proof-card">
+            <span>{proofTitle}</span>
+            <div>
+              {proofItems.map((item) => (
+                <strong key={item}>{item}</strong>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

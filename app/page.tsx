@@ -181,7 +181,7 @@ export default function HomePage() {
           {standardShowcase.map((item) => (
             <article className="standard-showcase-card" key={item.code}>
               <div style={{ marginBottom: '16px' }}>
-                <img src={item.iconPath} alt={`${item.title} icon`} style={{ width: '56px', height: '56px', objectFit: 'contain' }} />
+                <img src={item.iconPath} alt={`${item.title} icon`} style={{ width: '80px', height: '80px', objectFit: 'contain' }} />
               </div>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
@@ -245,32 +245,46 @@ export default function HomePage() {
           <div className="panel founder-panel">
             <span className="eyebrow">Leadership</span>
             <h3>{site.owner}</h3>
-            <p>
-              Food technology consultant, FSSAI/FoSTaC trainer and assessor with a practical, training-oriented approach to certification readiness.
-            </p>
+            <ul className="clean-list" style={{ marginTop: '16px' }}>
+              <li>FSSAI Authorized Schedule IV Auditor</li>
+              <li>USFDA PCQI for Human Food</li>
+              <li>MSME ZED &amp; LEAN Assessor</li>
+              <li>Master Trainer &ndash; NLRP PMFME Scheme</li>
+              <li>FIFA Auditor</li>
+              <li>Director &ndash; Maharashtra Ayurved Food Business Operators Association</li>
+            </ul>
           </div>
           <div className="panel profile-panel glass-panel">
-            <h3>Qualification</h3>
-            <p>B.Sc. Chemistry, B.Tech Food Engineering &amp; Technology, ICT Mumbai, DBM, FSSAI/FoSTaC Trainer, Assessor and Auditor. US FDA/PCQI approved for human food, MSME ZED &amp; LEAN Assessor, Director of Maharashtra Ayurved Food Business Operators Association.</p>
+            <h3>Qualifications</h3>
+            <ul className="clean-list" style={{ marginTop: '16px' }}>
+              <li>B.Sc. Chemistry</li>
+              <li>B.Tech. Food Engineering &amp; Technology</li>
+              <li>ICT Mumbai</li>
+            </ul>
           </div>
         </div>
       </AnimatedSection>
 
       <AnimatedSection className="section why-modern-section">
-        <div className="container split split-equal why-modern-grid">
-          <div>
-            <SectionHeading
-              eyebrow="Why choose Samarth"
-              title="A professional partner for teams that need clarity before certification."
-              text="We combine requirement understanding, structured documentation and practical delivery support so your certification stays aligned with real plant and process realities."
-            />
-            <Link href="/about" className="btn btn-primary">Read Company Profile</Link>
+        <div className="container">
+          <SectionHeading
+            center
+            eyebrow="Why Clients Choose Our Organization"
+            title="A professional partner for teams that need clarity before certification."
+            text="We combine requirement understanding, structured documentation and practical delivery support so your certification stays aligned with real plant and process realities."
+          />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginTop: '48px' }}>
+            {whyChooseUs.map((item, index) => (
+              <div key={index} className="panel glass-panel" style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', padding: '24px' }}>
+                <div style={{ flexShrink: 0, width: '36px', height: '36px', borderRadius: '50%', background: 'var(--brand-light)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700', fontSize: '0.9rem' }}>
+                  {index + 1}
+                </div>
+                <p style={{ margin: 0, fontWeight: 500, color: 'var(--ink)', lineHeight: 1.5, fontSize: '0.95rem' }}>{item}</p>
+              </div>
+            ))}
           </div>
-          <div className="panel glass-panel why-card-list">
-            <h3>What clients can expect</h3>
-            <ul className="clean-list">
-              {whyChooseUs.map((item) => <li key={item}>{item}</li>)}
-            </ul>
+          <div className="section-actions-center" style={{ marginTop: '48px' }}>
+            <Link href="/about" className="btn btn-primary">Read Company Profile</Link>
           </div>
         </div>
       </AnimatedSection>
@@ -290,7 +304,7 @@ export default function HomePage() {
             {industriesServed.map((industry) => (
               <div className="industry-card" key={industry.title}>
                 <span className="industry-card-icon" aria-hidden="true">
-                  <img src={industry.iconPath} alt={`${industry.title} icon`} style={{ width: '36px', height: '36px', objectFit: 'contain' }} />
+                  <img src={industry.iconPath} alt={`${industry.title} icon`} style={{ width: '56px', height: '56px', objectFit: 'contain' }} />
                 </span>
                 <strong>{industry.title}</strong>
               </div>

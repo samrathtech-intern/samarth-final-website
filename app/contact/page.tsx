@@ -45,6 +45,9 @@ export default function ContactPage() {
             <h3>{site.name}</h3>
             <div className="prose">
               <p><strong>Contact Person:</strong> {site.owner}</p>
+              <p><strong>Contact No:</strong>{site.contact_no2}</p>
+              <p><strong>Alternate Contact No:</strong>{site.contact_no1}</p>
+
               <p><strong>Address:</strong> {site.address}</p>
 
               <div className="contact-email-block">
