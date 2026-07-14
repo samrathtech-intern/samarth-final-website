@@ -30,8 +30,6 @@ export default function GalleryPage() {
           image="/assets/gallery/gallery-03.webp"
           imageAlt="Food processing plant walkthrough by Samarth Technoologies"
           badges={['Training Sessions', 'Plant Visits', 'Certificates']}
-          proofTitle="Showcase"
-          proofItems={['Site Work', 'Workshops', 'Certificates']}
         />
       </AnimatedSection>
 

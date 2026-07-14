@@ -262,6 +262,7 @@ export default function HomePage() {
               <li>B.Sc. Chemistry</li>
               <li>B.Tech. Food Engineering &amp; Technology</li>
               <li>ICT Mumbai</li>
+              <li>ISO 9001,22000,14000 LEAD AUDITOR</li>
             </ul>
           </div>
         </div>

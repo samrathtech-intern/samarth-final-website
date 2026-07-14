@@ -251,7 +251,7 @@ export default function AboutPage() {
         <div className="container split">
           <div className="panel">
             <h3>Qualification</h3>
-            <p>B.Sc. Chemistry, B.Tech Food Engineering &amp; Technology, ICT Mumbai, DBM, FSSAI/FoSTaC Trainer, Assessor and Auditor. US FDA/PCQI approved for human food, MSME ZED &amp; LEAN Assessor, Director of Maharashtra Ayurved Food Business Operators Association.</p>
+            <p>BSc Chemistry, BTech Food Engineering and Technology - ICT, Mumbai, DBM, ISO 9001, 22000, 14000 LEAD AUDITOR, FSSAI/FoSTaC Trainer, Assessor and Auditor. US FDA/PCQI approved for human food, MSME ZED &amp; LEAN Assessor, Director of Maharashtra Ayurved Food Business Operators Association.</p>
           </div>
           <div className="panel panel-dark">
             <h3>Consulting Approach</h3>

@@ -13,7 +13,8 @@ export function getServiceIconPath(title: string): string {
   if (t.includes('pcqi') || t.includes('fda')) return '/icons/🇺🇸-fda-icon.jpeg';
   if (t.includes('zed') || t.includes('msme') || t.includes('lean')) return '/icons/msme-zed-icon.jpeg';
   if (t.includes('fssc')) return '/icons/fssc-icon.png';
-  if (t.includes('fssai')) return '/icons/fssai-icon.jpg';
+  if (t.includes('schedule 4')) return '/icons/fssai-icon.jpg';
+  if (t.includes('fssai')) return '/icons/fostac.png';
   if (t.includes('global') || t.includes('g.a.p')) return '/icons/global-gap-icon.png';
   if (t.includes('brc')) return '/icons/brc-icon.png';
   if (t.includes('haccp')) return '/icons/haccp-icon.jpeg';
@@ -21,6 +22,7 @@ export function getServiceIconPath(title: string): string {
   if (t.includes('gmp')) return '/icons/gmp-icon.jpeg';
   if (t.includes('nabl')) return '/icons/nabl-icon.png';
   if (t.includes('iso')) return '/icons/iso-icon.jpeg';
+  if (t.includes('fostac')) return '/icons/fostac.png';
 
   // Generic category matches
   if (t.includes('training')) return '/icons/training-icon.png';

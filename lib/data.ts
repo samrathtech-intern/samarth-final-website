@@ -20,7 +20,7 @@ export const site = {
   whatsapp: 'https://wa.me/919595888000',
   linkedin: 'https://www.linkedin.com/in/ft-amrendra-mahamuni-96544641/',
   contact_no1: '8799974926',
-  contact_no2: '9595888000',
+  contact_no2: '9130030363',
   googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfsVrkZwIpRjOrOlzDg38WukSa9cyj_l4qBE3exXlBQH22peA/formResponse',
   googleFormFields: {
     name: 'entry.939034911',
@@ -1004,12 +1004,14 @@ export const proofCertificateItems = certificateItems.filter((item) => {
 export const trustBadges = [
   'QCI Member · ORG/CS/WR/445',
   'FSSAI FoSTaC Certified Trainer',
-  'MoFPI Govt. of India Master Trainer',
+  'FSSAI MOFPI National Level Resource Person for PMFME scheme',
   'US FDA / PCQI Approved',
   'MSME ZED & LEAN Assessor',
   'GST Registered Entity',
   'Udyog Aadhaar Registered',
-  'UDYAM Registered'
+  'UDYAM Registered',
+  'FSSAI Schedule 4 Auditor',
+  'ISO Auditor'
 ];
 
 // ── TESTIMONIALS ──────────────────────────────────────────────────────────────

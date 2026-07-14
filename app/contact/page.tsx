@@ -40,10 +40,11 @@ export default function ContactPage() {
         <div className="container contact-grid">
           <aside className="panel contact-info-card">
             <span className="panel-kicker">Contact Details</span>
-            <h3>{site.name}</h3>
+            <h3 style={{ color: "var(--accent)" }}>{site.name}</h3>
             <div className="prose">
               <p><strong>Contact Person:</strong> {site.owner}</p>
-              <p><strong>Contact No:</strong>{site.contact_no2}</p>
+              <p><strong>Contact No:</strong> {site.contact_no2}</p>
+              <p><strong>Alternate Contact Person:</strong> Operational Manager</p>
               <p><strong>Alternate Contact No:</strong>{site.contact_no1}</p>
 
               <p><strong>Address:</strong> {site.address}</p>
