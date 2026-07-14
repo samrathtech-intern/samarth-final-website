@@ -5,6 +5,7 @@ import { CTASection } from '@/components/CTASection';
 import { PageHero } from '@/components/PageHero';
 import { SectionHeading } from '@/components/SectionHeading';
 import { ServiceCard } from '@/components/ServiceCard';
+import { QuotesCarousel } from '@/components/QuotesCarousel';
 import { serviceCategories } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -86,6 +87,8 @@ export default function ServicesPage() {
           </div>
         </div>
       </AnimatedSection>
+
+      <QuotesCarousel />
 
       <CTASection />
     </>

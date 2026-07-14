@@ -183,7 +183,6 @@ img {
   width: 76px;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 6px 12px rgba(15, 23, 42, 0.12));
   transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -193,9 +192,6 @@ img {
   object-fit: contain;
 }
 
-.brand:hover .brand-logo {
-  transform: scale(1.03) translateY(-1px) rotate(-1deg);
-}
 
 .brand-copy {
   display: grid;
@@ -767,21 +763,20 @@ p {
 }
 
 .hero-logo-sigil {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   display: grid;
   place-items: center;
-  border-radius: 24px;
-  background: var(--brand-light);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
-  animation: float-sigil 4s ease-in-out infinite;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .hero-logo-sigil img {
-  width: 80px;
+  width: 150px;
   height: auto;
   object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 @keyframes float-sigil {
@@ -1466,8 +1461,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 48px;
-  height: 48px;
+  width: 80px;
+  height: 80px;
   background: var(--brand-light);
   border-radius: 12px;
   padding: 8px;
@@ -1736,7 +1731,7 @@ textarea:focus {
 }
 
 .footer p,
-.footer a,
+.footer a:not(.btn),
 .footer li,
 .footer span {
   color: #CBD5E1;
@@ -1766,14 +1761,13 @@ textarea:focus {
 }
 
 .footer-brand img {
-  width: 114px;
+  width: 180px;
   height: auto;
   object-fit: contain;
-  background: var(--surface);
-  border-radius: 14px;
-  padding: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  filter: brightness(0) invert(39%) sepia(95%) saturate(2855%) hue-rotate(11deg) brightness(96%) contrast(94%);
 }
+
+
 
 .footer-brand strong {
   display: block;
@@ -1838,8 +1832,35 @@ textarea:focus {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+.footer-developer-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+}
+
+.footer-developer-credit span {
+  color: #94A3B8 !important;
+}
+
+.developer-logo-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+
+
+.developer-logo {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -2101,17 +2122,41 @@ textarea:focus {
   color: white;
 }
 
+.map-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.map-header {
+  margin-bottom: 24px;
+}
+
 .map-embed-wrapper {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-soft);
   border: 1px solid var(--line);
+  margin: 0 auto;
 }
 
 .map-directions-row {
   display: flex;
+  justify-content: center;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 24px;
+}
+
+.contact-flow-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-flow-grid .mini-step {
+  text-align: center;
+  align-items: center;
 }
 
 /* Split grids layout helper */
@@ -2464,7 +2509,7 @@ textarea:focus {
 }
 
 .philosophy-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: 2.5rem;
   letter-spacing: -0.04em;
   color: var(--brand-dark);
 }
@@ -3779,5 +3824,268 @@ textarea:focus {
 
   100% {
     transform: translateX(calc(-50% - 2rem));
+  }
+}
+
+/* ==========================================================================
+   FOOD SAFETY & MANAGEMENT QUOTES CAROUSEL
+   ========================================================================== */
+.quotes-section {
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.quotes-carousel-wrapper {
+  position: relative;
+  background: linear-gradient(135deg, var(--accent-light, #FFF7ED) 0%, var(--surface) 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 5rem 4rem 3.5rem;
+  box-shadow: var(--shadow);
+  max-width: 960px;
+  margin: 0 auto;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: visible !important;
+}
+
+.quotes-carousel-wrapper:hover {
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+  border-color: var(--line-strong);
+}
+
+/* Glow effect behind the quotes */
+.quotes-deco-glow {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(var(--brand), 0.03) 0%, transparent 70%);
+  background-image: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+  opacity: 0.6;
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Badge at the top (Instagram blue verified badge style) */
+.quotes-deco-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #0095F6;
+  color: #FFFFFF;
+  border: 3px solid var(--surface);
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 149, 246, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quotes-carousel-wrapper:hover .quotes-deco-badge {
+  transform: translate(-50%, -60%) scale(1.08);
+  background: #0084E2;
+  box-shadow: 0 6px 16px rgba(0, 149, 246, 0.35);
+}
+
+.quotes-deco-badge svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Slide track */
+.quotes-carousel-track-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.quotes-carousel-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quotes-slide {
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0.3;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.95);
+  padding: 0 2rem;
+}
+
+.quotes-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Quote Icon */
+.quote-mark-icon {
+  font-family: 'Poppins', Georgia, serif;
+  font-size: 5.5rem;
+  line-height: 1;
+  color: var(--brand);
+  opacity: 0.08;
+  height: 38px;
+  margin-bottom: -10px;
+  display: block;
+  user-select: none;
+}
+
+/* Quote text style */
+.quote-text {
+  font-family: 'Poppins', var(--font-poppins), sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.01em;
+}
+
+.quote-author {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-style: normal;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quote-author::before,
+.quote-author::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+/* Slide buttons */
+.quote-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  box-shadow: var(--shadow-soft);
+}
+
+.quote-nav-btn:hover {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--brand-text);
+  box-shadow: var(--shadow);
+}
+
+.quote-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.prev-btn {
+  left: 2rem;
+}
+
+.next-btn {
+  right: 2rem;
+}
+
+/* Indicators */
+.quotes-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 2.5rem;
+  z-index: 5;
+  position: relative;
+}
+
+.quote-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line-strong);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quote-dot:hover {
+  background: var(--muted);
+}
+
+.quote-dot.active {
+  width: 28px;
+  border-radius: 4px;
+  background: var(--brand);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .quotes-carousel-wrapper {
+    padding: 5rem 3rem 3rem;
+  }
+
+  .quote-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .quotes-section {
+    padding: 3.5rem 0;
+  }
+
+  .quotes-carousel-wrapper {
+    padding: 4.5rem 1.5rem 2.5rem;
+    border-radius: var(--radius);
+  }
+
+  .quote-text {
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
+
+  .quote-nav-btn {
+    display: none;
+    /* Swipe/dots are better for mobile screen real estate */
+  }
+
+  .quotes-slide {
+    padding: 0 0.5rem;
+  }
+
+  .quote-author::before,
+  .quote-author::after {
+    width: 8px;
   }
 }

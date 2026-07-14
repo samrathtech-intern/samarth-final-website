@@ -84,7 +84,7 @@ export default function AboutPage() {
                 {site.legalName} was founded by {site.owner}. The firm is located in Pune, Maharashtra and is a member of Quality Council of India (QCI). Membership No: {site.qciMembership}.
               </p>
               <p>
-                Mr. Amrendra Mahamuni is a Food Engineering &amp; Technologist from ICT. He is associated with FSSAI FoSTaC as a FoSTaC trainer and assessor, and is a national level resource person / master trainer of Ministry of Food Processing Industries (MoFPI), Government of India.
+                Mr. Amrendra Mahamuni is a Food Engineering &amp; Technologist from ICT. He is associated with FSSAI FoSTaC as a FoSTaC trainer and assessor (ranked within the top 100 performing FSSAI FoSTaC trainers), and is a national level resource person / master trainer of Ministry of Food Processing Industries (MoFPI), Government of India.
               </p>
               <p>
                 The team supports clients with requirement study, documentation, implementation, training, internal-audit preparation and coordination with certification bodies where required.

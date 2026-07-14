@@ -11,6 +11,7 @@ import { StatsSection } from '@/components/StatsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { TrustBar } from '@/components/TrustBar';
 import { SafeImage } from '@/components/SafeImage';
+import { QuotesCarousel } from '@/components/QuotesCarousel';
 import { certificateItems, galleryItems, processSteps, services, site, trustAreas, whyChooseUs } from '@/lib/data';
 
 const trustIndicators = [
@@ -39,8 +40,8 @@ const standardShowcase = [
 ];
 
 const deliveryPillars = [
-  { 
-    title: 'Gap study', 
+  {
+    title: 'Gap study',
     text: 'Understand current process maturity before recommending the right certification path.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -49,8 +50,8 @@ const deliveryPillars = [
       </svg>
     )
   },
-  { 
-    title: 'Documentation', 
+  {
+    title: 'Documentation',
     text: 'Build SOPs, records, checklists and manuals that teams can maintain.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -62,8 +63,8 @@ const deliveryPillars = [
       </svg>
     )
   },
-  { 
-    title: 'Training', 
+  {
+    title: 'Training',
     text: 'Prepare people with practical food-safety, hygiene and audit-readiness awareness.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -74,8 +75,8 @@ const deliveryPillars = [
       </svg>
     )
   },
-  { 
-    title: 'Audit readiness', 
+  {
+    title: 'Audit readiness',
     text: 'Review records, corrective actions and evidence before the assessment stage.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -128,7 +129,7 @@ export default function HomePage() {
                 <span className="certification-status">Readiness Roadmap</span>
               </div>
               <div className="hero-logo-sigil">
-                <Image src="/brand/samarth-emblem.png" alt="Samarth Technoologies emblem" width={73} height={76} />
+                <Image src="/swami.png" alt="Samarth Technoologies swami emblem" width={150} height={150} />
               </div>
               <h2>Practical certification systems shaped around real food-safety and quality workflows.</h2>
               <div className="capability-grid certification-capabilities">
@@ -247,6 +248,7 @@ export default function HomePage() {
             <h3>{site.owner}</h3>
             <ul className="clean-list" style={{ marginTop: '16px' }}>
               <li>FSSAI Authorized Schedule IV Auditor</li>
+              <li>Top 100 Performing FSSAI FoSTaC Trainer</li>
               <li>USFDA PCQI for Human Food</li>
               <li>MSME ZED &amp; LEAN Assessor</li>
               <li>Master Trainer &ndash; NLRP PMFME Scheme</li>
@@ -289,6 +291,8 @@ export default function HomePage() {
         </div>
       </AnimatedSection>
 
+      <QuotesCarousel />
+
       <TestimonialsSection />
 
       <StatsSection />
@@ -304,7 +308,7 @@ export default function HomePage() {
             {industriesServed.map((industry) => (
               <div className="industry-card" key={industry.title}>
                 <span className="industry-card-icon" aria-hidden="true">
-                  <img src={industry.iconPath} alt={`${industry.title} icon`} style={{ width: '56px', height: '56px', objectFit: 'contain' }} />
+                  <img src={industry.iconPath} alt={`${industry.title} icon`} style={{ width: '90px', height: '90px', objectFit: 'contain' }} />
                 </span>
                 <strong>{industry.title}</strong>
               </div>

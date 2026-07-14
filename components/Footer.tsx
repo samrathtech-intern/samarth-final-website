@@ -20,7 +20,7 @@ export function Footer() {
       <div className="container footer-grid">
         <div className="footer-main-col">
           <div className="footer-brand">
-            <Image src={site.logo} alt={`${site.name} logo`} width={160} height={114} />
+            <Image src={site.logo} alt={`${site.name} logo`} width={180} height={128} />
             <div>
               <strong>{site.name}</strong>
               <span>{site.tagline}</span>
@@ -73,6 +73,12 @@ export function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
+        <div className="footer-developer-credit">
+          <span>Developed &amp; Maintained By</span>
+          <div className="developer-logo-box" title="RS's Two Registers OPC PVT LTD">
+            <Image src="/2reg.png" alt="RS's Two Registers OPC PVT LTD Logo" width={112} height={28} className="developer-logo" />
+          </div>
+        </div>
         <ViewCounter />
       </div>
     </footer>

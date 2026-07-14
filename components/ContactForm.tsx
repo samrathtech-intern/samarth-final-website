@@ -8,7 +8,8 @@ export function ContactForm() {
 
   function submitForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const name = String(form.get('name') || '').trim();
     const email = String(form.get('email') || '').trim();
     const mobile = String(form.get('mobile') || '').trim();
@@ -20,12 +21,43 @@ export function ContactForm() {
       return;
     }
 
-    const subject = encodeURIComponent(`Website enquiry - ${service || 'Consultancy requirement'}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nMobile: ${mobile || '-'}\nService: ${service || '-'}\n\nRequirement:\n${message}`
-    );
-    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-    setStatus('Opening your email app with the enquiry details.');
+    const googleFormUrl = (site as any).googleFormUrl;
+
+    if (googleFormUrl) {
+      setStatus('Submitting your enquiry...');
+      
+      const formData = new URLSearchParams();
+      const fields = (site as any).googleFormFields;
+      formData.append(fields.name, name);
+      formData.append(fields.email, email);
+      formData.append(fields.mobile, mobile);
+      formData.append(fields.service, service);
+      formData.append(fields.message, message);
+
+      fetch(googleFormUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString(),
+      })
+        .then(() => {
+          setStatus('Enquiry submitted successfully! We will get back to you soon.');
+          formElement.reset();
+        })
+        .catch((err) => {
+          console.error(err);
+          setStatus('Error submitting enquiry. Please try again or contact us directly.');
+        });
+    } else {
+      const subject = encodeURIComponent(`Website enquiry - ${service || 'Consultancy requirement'}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nMobile: ${mobile || '-'}\nService: ${service || '-'}\n\nRequirement:\n${message}`
+      );
+      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+      setStatus('Opening your email app with the enquiry details.');
+    }
   }
 
   return (
@@ -59,7 +91,7 @@ export function ContactForm() {
         Requirement Details *
         <textarea name="message" placeholder="Mention your business type, current system, target standard and timeline." rows={6} required />
       </label>
-      <button className="btn btn-primary" type="submit">Prepare Enquiry Email</button>
+      <button className="btn btn-primary" type="submit">Submit Enquiry</button>
       {status ? <p className="form-status">{status}</p> : null}
     </form>
   );

@@ -9,7 +9,7 @@ export const site = {
   owner: 'Mr. Amrendra Mahamuni',
   address:
     'Vijayashree Coop. Housing Society Ltd. SR. No. 129, Flat B-36, Near Global Hospital, Dattawadi, Pune, Maharashtra 411030, India',
-  logo: '/brand/samarth-technoologies-logo.png',
+  logo: '/final_logo_transparent.png',
   qciMembership: 'ORG/CS/WR/445',
   gst: '27ADCFS4679J1ZI',
   pan: 'ADCFS4679J',
@@ -20,7 +20,15 @@ export const site = {
   whatsapp: 'https://wa.me/919595888000',
   linkedin: 'https://www.linkedin.com/in/ft-amrendra-mahamuni-96544641/',
   contact_no1: '8799974926',
-  contact_no2: '9595888000'
+  contact_no2: '9595888000',
+  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfsVrkZwIpRjOrOlzDg38WukSa9cyj_l4qBE3exXlBQH22peA/formResponse',
+  googleFormFields: {
+    name: 'entry.939034911',
+    email: 'entry.275967671',
+    mobile: 'entry.357367344',
+    service: 'entry.1329971843',
+    message: 'entry.1082389950'
+  }
 };
 
 export type Service = {
@@ -448,7 +456,7 @@ export const services: Service[] = [
     short: 'Certified FSSAI FoSTaC food safety supervisor training across all food business categories.',
     description: [
       'FoSTaC (Food Safety Training & Certification) is an FSSAI initiative to ensure trained and certified Food Safety Supervisors in every food business. It is mandatory for licensed food businesses under FSSAI regulations.',
-      'Mr. Amrendra Mahamuni is an FSSAI-authorised FoSTaC trainer and assessor, delivering practical food safety knowledge across manufacturing, catering, dairy, bakery, retail, storage and transport sectors.'
+      'Mr. Amrendra Mahamuni is an FSSAI-authorised FoSTaC trainer and assessor (ranked within the top 100 performing FSSAI FoSTaC trainers), delivering practical food safety knowledge across manufacturing, catering, dairy, bakery, retail, storage and transport sectors.'
     ],
     bullets: [
       'Certified FoSTaC training for Food Safety Supervisors.',
@@ -1075,7 +1083,7 @@ export const faqs: Faq[] = [
   {
     question: 'Can you train our staff as part of the engagement?',
     answer:
-      'Yes. Mr. Amrendra Mahamuni is an FSSAI FoSTaC-certified trainer and assessor and a national-level resource person (Master Trainer) for the Ministry of Food Processing Industries (MoFPI), Government of India, so staff training is built into most food-safety and quality engagements.'
+      'Yes. Mr. Amrendra Mahamuni is an FSSAI FoSTaC-certified trainer and assessor (ranked within the top 100 performing FSSAI FoSTaC trainers) and a national-level resource person (Master Trainer) for the Ministry of Food Processing Industries (MoFPI), Government of India, so staff training is built into most food-safety and quality engagements.'
   },
   {
     question: 'Do you support businesses outside Pune?',

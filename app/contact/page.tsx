@@ -30,11 +30,9 @@ export default function ContactPage() {
           eyebrow="Contact Samarth"
           title="Start a focused certification-readiness discussion."
           text="Share your organisation type, target standard and timeline. The team will respond with a clear next step for documentation, training or implementation support."
-          image="/assets/brand/food-testing-lab-hero.webp"
+          image="/brand/contact.jpeg"
           imageAlt="Food testing laboratory consultation visual"
           badges={['Pune office', 'India-wide support', 'WhatsApp available']}
-          proofTitle="Enquiry path"
-          proofItems={['Requirement', 'Scope', 'Plan']}
         />
       </AnimatedSection>
 
@@ -64,6 +62,8 @@ export default function ContactPage() {
 
               <p><strong>Website:</strong> {site.domain}</p>
             </div>
+
+            <br></br>
 
             {/* Social & Quick Contact */}
             <div className="contact-social-row">
@@ -95,6 +95,8 @@ export default function ContactPage() {
               </a>
             </div>
 
+            <br></br>
+
             <div className="contact-mini-grid">
               <div><span>Location</span><strong>Pune</strong></div>
               <div><span>Coverage</span><strong>India-wide support</strong></div>
@@ -118,8 +120,8 @@ export default function ContactPage() {
             <div className="map-embed-wrapper">
               <iframe
                 id="office-google-map"
-                title="Samarth Technoologies Office Location – Dattawadi, Pune"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.6557539!2d73.8449!3d18.5108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMwJzM5LjAiTiA3M8KwNTAnNDIuNCJF!5e0!3m2!1sen!2sin!4v1699000000000!5m2!1sen!2sin"
+                title="Samarth Technoologies Office Location"
+                src="https://maps.google.com/maps?q=18.5013433,73.8414257(Samarth+Technoologies)&z=18&output=embed"
                 width="100%"
                 height="400"
                 style={{ border: 0, borderRadius: '12px' }}
@@ -131,7 +133,7 @@ export default function ContactPage() {
             <div className="map-directions-row">
               <a
                 id="get-directions-btn"
-                href="https://maps.google.com/?q=Dattawadi+Pune+Maharashtra+411030"
+                href="https://www.google.com/maps/place/Samarth+Technoologies/@18.5013375,73.8410745,20.26z/data=!4m15!1m8!3m7!1s0x3bc2bff58ea7579b:0xf6173511be66605!2sVijayshree+Towers,+Pune,+Maharashtra+411030!3b1!8m2!3d18.5013213!4d73.841355!16s%2Fg%2F11lsnglzwg!3m5!1s0x3bc2bf7ec00e1f5f:0xe0231a57b12e8a0b!8m2!3d18.5013433!4d73.8414257!16s%2Fg%2F11vydxtkh7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"

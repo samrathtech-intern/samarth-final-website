@@ -4,6 +4,7 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 import { CTASection } from '@/components/CTASection';
 import { PageHero } from '@/components/PageHero';
 import { SectionHeading } from '@/components/SectionHeading';
+import { QuotesCarousel } from '@/components/QuotesCarousel';
 import {
   site,
   auditStandardCategories,
@@ -186,6 +187,8 @@ export default function IsoAuditingServicesPage() {
           </div>
         </div>
       </AnimatedSection>
+
+      <QuotesCarousel />
 
       <CTASection />
     </>
