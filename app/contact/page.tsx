@@ -43,9 +43,9 @@ export default function ContactPage() {
             <h3 style={{ color: "var(--accent)" }}>{site.name}</h3>
             <div className="prose">
               <p><strong>Contact Person:</strong> {site.owner}</p>
-              <p><strong>Contact No:</strong> {site.contact_no2}</p>
+              <p><strong>Contact No:</strong><a href={`tel:${site.contact_no2}`}>{site.contact_no2}</a></p>
               <p><strong>Alternate Contact Person:</strong> Operational Manager</p>
-              <p><strong>Alternate Contact No:</strong>{site.contact_no1}</p>
+              <p><strong>Alternate Contact No:</strong><a href={`tel:${site.contact_no1}`}>{site.contact_no1}</a></p>
 
               <p><strong>Address:</strong> {site.address}</p>
 
@@ -61,7 +61,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <p><strong>Website:</strong> {site.domain}</p>
+              <p><strong>Website:</strong> <a href={site.domain}>{site.domain}</a></p>
             </div>
 
             <br></br>
