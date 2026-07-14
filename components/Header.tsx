@@ -68,12 +68,12 @@ export function Header() {
               </Link>
             );
           })}
-          <a className="mobile-menu-cta" href={`mailto:${site.email}?subject=Certification%20Consultancy%20Enquiry%20from%20Website`}>
+          <a className="mobile-menu-cta" href={`tel:+91${site.contact_no2}`}>
             Get Consultation
           </a>
         </nav>
 
-        <a className="nav-cta" href={`mailto:${site.email}?subject=Certification%20Consultancy%20Enquiry%20from%20Website`}>
+        <a className="nav-cta" href={`tel:+91${site.contact_no2}`}>
           Get Consultation
         </a>
       </div>
