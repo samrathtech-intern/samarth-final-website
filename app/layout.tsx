@@ -50,7 +50,10 @@ export const metadata: Metadata = {
     ],
     apple: '/brand/apple-touch-icon.png'
   },
-  manifest: '/manifest.webmanifest'
+  manifest: '/manifest.webmanifest',
+  verification: {
+    google: 'ybkgi36I30rKuzLdPW0mhoFcxCh2kQ_Z9Xvsiz0ireg',
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
