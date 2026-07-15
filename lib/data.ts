@@ -17,7 +17,7 @@ export const site = {
   udyam: 'UDYAM–MH–26–0299477',
   established: '2015',
   consultants: '24',
-  whatsapp: 'https://wa.me/919595888000',
+  whatsapp: 'https://wa.me/9130030363',
   linkedin: 'https://www.linkedin.com/in/ft-amrendra-mahamuni-96544641/',
   contact_no1: '8799974926',
   contact_no2: '9130030363',
