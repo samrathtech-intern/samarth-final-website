@@ -2,7 +2,7 @@ export const site = {
   name: 'SAMARTH TECHNOOLOGIES',
   legalName: 'Samarth Technoologies',
   tagline: 'ISO, food-safety and audit-readiness consultancy for growing businesses.',
-  domain: 'https://www.samarthtechnoologies.com',
+  domain: 'https://samarthtechnoologies.com',
   email: 'info.samarthtechnoologies@gmail.com',
   altEmail: 'amrendramahamuni@gmail.com',
   altEmail2: 'amrendramahamuni07@gmail.com',
