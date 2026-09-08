@@ -97,13 +97,53 @@ export default function AdminDashboardPage() {
     router.push('/admin');
   };
 
+  // ── Image Compressor Helper ────────────────────────────────────────────────
+  const compressImage = async (file: File, maxWidth = 1600, quality = 0.82): Promise<{ file: File; dataUrl: string }> => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          let width = img.width;
+          let height = img.height;
+          if (width > maxWidth) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          if (ctx) {
+            ctx.drawImage(img, 0, 0, width, height);
+            const dataUrl = canvas.toDataURL('image/jpeg', quality);
+            canvas.toBlob((blob) => {
+              if (blob) {
+                const compressedFile = new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), {
+                  type: 'image/jpeg',
+                });
+                resolve({ file: compressedFile, dataUrl });
+              } else {
+                resolve({ file, dataUrl: e.target?.result as string });
+              }
+            }, 'image/jpeg', quality);
+          } else {
+            resolve({ file, dataUrl: e.target?.result as string });
+          }
+        };
+        img.src = e.target?.result as string;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
   // ── Gallery Actions ─────────────────────────────────────────────────────────
 
-  const handleGalleryFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleGalleryFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setNewImageFile(file);
       setNewImagePreview(URL.createObjectURL(file));
+      setNewImageFile(file);
     }
   };
 
@@ -120,31 +160,37 @@ export default function AdminDashboardPage() {
 
     setSubmitting(true);
     try {
-      // 1. Upload image
+      // 1. Optimize image before upload
+      const { file: optimizedFile, dataUrl: fallbackDataUrl } = await compressImage(newImageFile);
+
+      // 2. Upload image to server
       const formData = new FormData();
-      formData.append('file', newImageFile);
+      formData.append('file', optimizedFile);
       formData.append('folder', 'gallery');
 
-      const uploadRes = await fetch('/api/admin/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const uploadData = await uploadRes.json();
+      let uploadedUrl = fallbackDataUrl;
 
-      if (!uploadRes.ok || !uploadData.ok) {
-        showToast('error', uploadData.message || 'Image upload failed');
-        setSubmitting(false);
-        return;
+      try {
+        const uploadRes = await fetch('/api/admin/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        const uploadData = await uploadRes.json();
+        if (uploadRes.ok && uploadData?.url) {
+          uploadedUrl = uploadData.url;
+        }
+      } catch (uploadErr) {
+        console.warn('Direct upload endpoint error, using optimized data URL:', uploadErr);
       }
 
-      // 2. Add gallery item
+      // 3. Save gallery item to persistent store
       const finalCategory = newCategory === 'NEW' ? customCategory.trim() : newCategory;
       const res = await fetch('/api/admin/gallery', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           item: {
-            src: uploadData.url,
+            src: uploadedUrl,
             title: newTitle.trim(),
             tag: newTag.trim() || finalCategory || 'Gallery',
             category: finalCategory || 'Consulting Work',
@@ -155,7 +201,7 @@ export default function AdminDashboardPage() {
       const data = await res.json();
       if (res.ok && data.ok) {
         setGalleryItems(data.items);
-        showToast('success', 'Gallery item added successfully!');
+        showToast('success', 'Gallery photo saved permanently!');
         setIsAddGalleryOpen(false);
         // Reset form
         setNewTitle('');
@@ -167,7 +213,7 @@ export default function AdminDashboardPage() {
       } else {
         showToast('error', data.message || 'Failed to save item');
       }
-    } catch (err) {
+    } catch {
       showToast('error', 'An error occurred while adding gallery item');
     } finally {
       setSubmitting(false);
@@ -176,6 +222,7 @@ export default function AdminDashboardPage() {
 
   const handleEditGallerySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!editingItem) return;
 
     setSubmitting(true);

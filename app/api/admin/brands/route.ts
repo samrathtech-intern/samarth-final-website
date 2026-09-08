@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkAdminAuth, unauthorizedResponse } from '@/lib/admin-middleware';
-import { getBrands, addBrand, removeBrand, setBrands } from '@/lib/admin-store';
+import { getBrandsAsync, addBrandAsync, removeBrandAsync, setBrandsAsync } from '@/lib/admin-store';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET() {
-  const brands = getBrands();
-  return NextResponse.json({ ok: true, brands });
+  const brands = await getBrandsAsync();
+  return NextResponse.json(
+    { ok: true, brands },
+    { headers: { 'Cache-Control': 'no-store, max-age=0' } }
+  );
 }
 
 export async function POST(request: NextRequest) {
@@ -18,16 +22,14 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { action, filename, brands } = body;
 
-    // Batch reorder / replace list
     if (action === 'reorder' && Array.isArray(brands)) {
-      setBrands(brands);
-      return NextResponse.json({ ok: true, message: 'Brands list updated successfully', brands });
+      const updatedBrands = await setBrandsAsync(brands);
+      return NextResponse.json({ ok: true, message: 'Brands list updated successfully', brands: updatedBrands });
     }
 
-    // Add single brand
     if (filename && typeof filename === 'string') {
-      addBrand(filename);
-      return NextResponse.json({ ok: true, message: 'Brand added successfully', brands: getBrands() });
+      const updatedBrands = await addBrandAsync(filename);
+      return NextResponse.json({ ok: true, message: 'Brand added successfully', brands: updatedBrands });
     }
 
     return NextResponse.json({ ok: false, message: 'Invalid payload' }, { status: 400 });
@@ -52,12 +54,8 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ ok: false, message: 'Brand filename is required' }, { status: 400 });
     }
 
-    const removed = removeBrand(filename);
-    if (!removed) {
-      return NextResponse.json({ ok: false, message: 'Brand not found' }, { status: 404 });
-    }
-
-    return NextResponse.json({ ok: true, message: 'Brand removed successfully', brands: getBrands() });
+    const updatedBrands = await removeBrandAsync(filename);
+    return NextResponse.json({ ok: true, message: 'Brand removed successfully', brands: updatedBrands });
   } catch (error) {
     return NextResponse.json(
       { ok: false, message: error instanceof Error ? error.message : 'Delete failed' },

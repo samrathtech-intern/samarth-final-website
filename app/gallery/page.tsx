@@ -3,10 +3,11 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { GalleryGrid } from '@/components/GalleryGrid';
-import { getGalleryItems, getProofCertificateItems } from '@/lib/admin-store';
+import { getGalleryItemsAsync, getProofCertificateItems } from '@/lib/admin-store';
 import { galleryItems as defaultGalleryItems, proofCertificateItems as defaultProofCertificates } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: 'Gallery & Certificates',
@@ -18,8 +19,8 @@ export const metadata: Metadata = {
   }
 };
 
-export default function GalleryPage() {
-  const dynamicGallery = getGalleryItems();
+export default async function GalleryPage() {
+  const dynamicGallery = await getGalleryItemsAsync();
   const dynamicCertificates = getProofCertificateItems();
 
   const galleryList = dynamicGallery && dynamicGallery.length > 0 ? dynamicGallery : defaultGalleryItems;
@@ -28,6 +29,7 @@ export default function GalleryPage() {
   const galleryMedia = galleryList.map((item) => ({ ...item, group: 'gallery' as const }));
   const certificateMedia = certificateList.map((item) => ({ ...item, group: 'certificate' as const }));
   const allMedia = [...galleryMedia, ...certificateMedia];
+
 
 
   return (

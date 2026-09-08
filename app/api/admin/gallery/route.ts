@@ -1,22 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkAdminAuth, unauthorizedResponse } from '@/lib/admin-middleware';
 import {
-  getGalleryItems,
-  getGalleryCategories,
-  addGalleryItem,
-  removeGalleryItem,
-  updateGalleryItem,
-  setGalleryItems,
-  setGalleryCategories,
-  GalleryItem
+  getGalleryItemsAsync,
+  getGalleryCategoriesAsync,
+  addGalleryItemAsync,
+  removeGalleryItemAsync,
+  updateGalleryItemAsync,
+  GalleryItem,
 } from '@/lib/admin-store';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET() {
-  const items = getGalleryItems();
-  const categories = getGalleryCategories();
-  return NextResponse.json({ ok: true, items, categories });
+  const items = await getGalleryItemsAsync();
+  const categories = await getGalleryCategoriesAsync();
+  return NextResponse.json(
+    { ok: true, items, categories },
+    { headers: { 'Cache-Control': 'no-store, max-age=0' } }
+  );
 }
 
 export async function POST(request: NextRequest) {
@@ -26,27 +28,12 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { action, item, items, categories, src, updates } = body;
-
-    // Batch update / reorder
-    if (action === 'reorder' && Array.isArray(items)) {
-      setGalleryItems(items);
-      return NextResponse.json({ ok: true, message: 'Gallery reordered successfully', items });
-    }
-
-    // Categories update
-    if (action === 'update_categories' && Array.isArray(categories)) {
-      setGalleryCategories(categories);
-      return NextResponse.json({ ok: true, message: 'Categories updated successfully', categories });
-    }
+    const { action, item, src, updates } = body;
 
     // Update single item
     if (action === 'update' && src && updates) {
-      const updated = updateGalleryItem(src, updates);
-      if (!updated) {
-        return NextResponse.json({ ok: false, message: 'Item not found' }, { status: 404 });
-      }
-      return NextResponse.json({ ok: true, message: 'Item updated successfully', items: getGalleryItems() });
+      const items = await updateGalleryItemAsync(src, updates);
+      return NextResponse.json({ ok: true, message: 'Item updated successfully', items });
     }
 
     // Add new item
@@ -57,15 +44,8 @@ export async function POST(request: NextRequest) {
         tag: item.tag || 'Gallery',
         category: item.category || 'Consulting Work',
       };
-      addGalleryItem(newItem);
-
-      // Also ensure category is in list if not already
-      const currentCats = getGalleryCategories();
-      if (!currentCats.includes(newItem.category)) {
-        setGalleryCategories([...currentCats, newItem.category]);
-      }
-
-      return NextResponse.json({ ok: true, message: 'Item added successfully', items: getGalleryItems() });
+      const items = await addGalleryItemAsync(newItem);
+      return NextResponse.json({ ok: true, message: 'Item added successfully', items });
     }
 
     return NextResponse.json({ ok: false, message: 'Invalid payload' }, { status: 400 });
@@ -90,12 +70,8 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ ok: false, message: 'Source src is required' }, { status: 400 });
     }
 
-    const removed = removeGalleryItem(src);
-    if (!removed) {
-      return NextResponse.json({ ok: false, message: 'Item not found' }, { status: 404 });
-    }
-
-    return NextResponse.json({ ok: true, message: 'Item removed successfully', items: getGalleryItems() });
+    const items = await removeGalleryItemAsync(src);
+    return NextResponse.json({ ok: true, message: 'Item removed successfully', items });
   } catch (error) {
     return NextResponse.json(
       { ok: false, message: error instanceof Error ? error.message : 'Delete failed' },
