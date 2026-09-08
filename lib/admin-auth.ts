@@ -1,19 +1,22 @@
 import crypto from 'crypto';
 
-// In-memory session store: token -> expiry timestamp (ms)
-// For local/single-process Node server. Also persists sessions during uptime.
-const sessions = new Map<string, number>();
-
 const SESSION_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 export function getAdminPassword(): string {
   return process.env.ADMIN_PASSWORD || 'admin123';
 }
 
+function getSecretKey(): string {
+  const pass = getAdminPassword();
+  return crypto.createHash('sha256').update(`samarth-cms-${pass}`).digest('hex');
+}
+
 export function verifyPassword(password: string): boolean {
   const targetPassword = getAdminPassword();
-  const inputBuffer = Buffer.from(password);
-  const targetBuffer = Buffer.from(targetPassword);
+  if (!password || !targetPassword) return false;
+
+  const inputBuffer = Buffer.from(password.trim());
+  const targetBuffer = Buffer.from(targetPassword.trim());
 
   if (inputBuffer.length !== targetBuffer.length) {
     return false;
@@ -22,28 +25,51 @@ export function verifyPassword(password: string): boolean {
   return crypto.timingSafeEqual(inputBuffer, targetBuffer);
 }
 
+/**
+ * Creates a stateless, tamper-proof HMAC session token.
+ * Format: `<timestamp>.<hmacSignature>`
+ * Works across serverless instances, lambdas, and restarts.
+ */
 export function createSession(): string {
-  const token = crypto.randomBytes(32).toString('hex');
-  const expiresAt = Date.now() + SESSION_TTL_MS;
-  sessions.set(token, expiresAt);
-  return token;
+  const timestamp = Date.now().toString();
+  const secret = getSecretKey();
+  const hmac = crypto.createHmac('sha256', secret).update(timestamp).digest('hex');
+  return `${timestamp}.${hmac}`;
 }
 
+/**
+ * Validates the HMAC signature and checks timestamp expiry.
+ */
 export function verifySession(token: string | null | undefined): boolean {
-  if (!token) return false;
-  const expiresAt = sessions.get(token);
-  if (!expiresAt) return false;
+  if (!token || typeof token !== 'string') return false;
 
-  if (Date.now() > expiresAt) {
-    sessions.delete(token);
+  const parts = token.split('.');
+  if (parts.length !== 2) return false;
+
+  const [timestampStr, providedSignature] = parts;
+  const timestamp = parseInt(timestampStr, 10);
+
+  if (isNaN(timestamp)) return false;
+
+  // Check TTL
+  if (Date.now() - timestamp > SESSION_TTL_MS || timestamp > Date.now() + 60000) {
     return false;
   }
 
-  return true;
+  // Verify HMAC signature
+  const secret = getSecretKey();
+  const expectedSignature = crypto.createHmac('sha256', secret).update(timestampStr).digest('hex');
+
+  const providedBuf = Buffer.from(providedSignature);
+  const expectedBuf = Buffer.from(expectedSignature);
+
+  if (providedBuf.length !== expectedBuf.length) {
+    return false;
+  }
+
+  return crypto.timingSafeEqual(providedBuf, expectedBuf);
 }
 
-export function invalidateSession(token: string | null | undefined): void {
-  if (token) {
-    sessions.delete(token);
-  }
+export function invalidateSession(_token: string | null | undefined): void {
+  // Stateless token invalidated by clearing client cookie
 }

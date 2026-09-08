@@ -32,29 +32,42 @@ const defaultBrands = [
 
 const DATA_FILE = join(process.cwd(), 'data', 'admin-data.json');
 
-// ── Read / Write helpers ─────────────────────────────────────────────────────
+let memoryCache: AdminData | null = null;
 
 function readData(): AdminData {
+  if (memoryCache) {
+    return memoryCache;
+  }
+
   try {
     if (existsSync(DATA_FILE)) {
       const raw = readFileSync(DATA_FILE, 'utf-8');
-      return JSON.parse(raw) as AdminData;
+      memoryCache = JSON.parse(raw) as AdminData;
+      return memoryCache;
     }
   } catch {
     // Fall through to defaults
   }
 
-  return {
+  memoryCache = {
     galleryItems: defaultGalleryItems as GalleryItem[],
     certificateItems: defaultCertificateItems as GalleryItem[],
     galleryCategories: [...defaultGalleryCategories],
     brands: [...defaultBrands],
   };
+
+  return memoryCache;
 }
 
 function writeData(data: AdminData): void {
-  writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  memoryCache = data;
+  try {
+    writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (err) {
+    console.warn('Filesystem write not supported on current runtime, kept in runtime cache:', err);
+  }
 }
+
 
 // ── Public API ───────────────────────────────────────────────────────────────
 
