@@ -12,7 +12,9 @@ import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { TrustBar } from '@/components/TrustBar';
 import { SafeImage } from '@/components/SafeImage';
 import { QuotesCarousel } from '@/components/QuotesCarousel';
-import { certificateItems, galleryItems, processSteps, services, site, trustAreas, whyChooseUs } from '@/lib/data';
+import { getGalleryItems, getCertificateItems } from '@/lib/admin-store';
+import { certificateItems as defaultCertificates, galleryItems as defaultGallery, processSteps, services, site, trustAreas, whyChooseUs } from '@/lib/data';
+
 
 const trustIndicators = [
   'Pune-based consulting team',
@@ -166,13 +168,24 @@ export default function HomePage() {
             />
           </div>
           <div className="visual-proof-mosaic" aria-label="Samarth work and credential visuals">
-            {[galleryItems[2], galleryItems[8], certificateItems[3], certificateItems[0]].map((item) => (
-              <article className="visual-proof-card" key={item.src}>
-                <SafeImage src={item.src} alt={`${item.title} visual`} loading="lazy" fallbackSrc="/brand/samarth-emblem.png" />
-                <span>{item.tag}</span>
-                <strong>{item.title}</strong>
-              </article>
-            ))}
+            {(() => {
+              const gItems = getGalleryItems() || defaultGallery;
+              const cItems = getCertificateItems() || defaultCertificates;
+              const showcaseList = [
+                gItems[2] || gItems[0] || defaultGallery[2],
+                gItems[8] || gItems[1] || defaultGallery[8],
+                cItems[3] || cItems[0] || defaultCertificates[3],
+                cItems[0] || defaultCertificates[0],
+              ].filter(Boolean);
+
+              return showcaseList.map((item) => (
+                <article className="visual-proof-card" key={item.src}>
+                  <SafeImage src={item.src} alt={`${item.title} visual`} loading="lazy" fallbackSrc="/brand/samarth-emblem.png" />
+                  <span>{item.tag}</span>
+                  <strong>{item.title}</strong>
+                </article>
+              ));
+            })()}
           </div>
         </div>
       </AnimatedSection>

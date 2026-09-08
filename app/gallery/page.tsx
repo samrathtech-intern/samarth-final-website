@@ -3,7 +3,10 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { GalleryGrid } from '@/components/GalleryGrid';
-import { galleryItems, proofCertificateItems } from '@/lib/data';
+import { getGalleryItems, getProofCertificateItems } from '@/lib/admin-store';
+import { galleryItems as defaultGalleryItems, proofCertificateItems as defaultProofCertificates } from '@/lib/data';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Gallery & Certificates',
@@ -16,9 +19,16 @@ export const metadata: Metadata = {
 };
 
 export default function GalleryPage() {
-  const galleryMedia = galleryItems.map((item) => ({ ...item, group: 'gallery' as const }));
-  const certificateMedia = proofCertificateItems.map((item) => ({ ...item, group: 'certificate' as const }));
+  const dynamicGallery = getGalleryItems();
+  const dynamicCertificates = getProofCertificateItems();
+
+  const galleryList = dynamicGallery && dynamicGallery.length > 0 ? dynamicGallery : defaultGalleryItems;
+  const certificateList = dynamicCertificates && dynamicCertificates.length > 0 ? dynamicCertificates : defaultProofCertificates;
+
+  const galleryMedia = galleryList.map((item) => ({ ...item, group: 'gallery' as const }));
+  const certificateMedia = certificateList.map((item) => ({ ...item, group: 'certificate' as const }));
   const allMedia = [...galleryMedia, ...certificateMedia];
+
 
   return (
     <>
