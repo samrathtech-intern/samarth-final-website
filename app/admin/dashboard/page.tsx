@@ -716,7 +716,7 @@ export default function AdminDashboardPage() {
                 </button>
                 <button
                   type="submit"
-                  className="admin-btn-action"
+                  className="admin-btn-modal-primary"
                   disabled={submitting}
                 >
                   {submitting ? 'Uploading...' : 'Save Photo'}
@@ -795,7 +795,7 @@ export default function AdminDashboardPage() {
                 </button>
                 <button
                   type="submit"
-                  className="admin-btn-action"
+                  className="admin-btn-modal-primary"
                   disabled={submitting}
                 >
                   {submitting ? 'Saving...' : 'Update Details'}
@@ -870,7 +870,7 @@ export default function AdminDashboardPage() {
                 </button>
                 <button
                   type="submit"
-                  className="admin-btn-action"
+                  className="admin-btn-modal-primary"
                   disabled={submitting}
                 >
                   {submitting ? 'Adding...' : 'Add Brand to Marquee'}
