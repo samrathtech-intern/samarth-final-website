@@ -131,7 +131,7 @@ export default function HomePage() {
                 <span className="certification-status">Readiness Roadmap</span>
               </div>
               <div className="hero-logo-sigil">
-                <Image src="/swami.png" alt="Samarth Technoologies swami emblem" width={150} height={150} />
+                <Image src="/final_team_logo.png" alt="Samarth Technoologies logo" width={300} height={200} style={{ width: '100%', height: 'auto' }} priority />
               </div>
               <h2>Practical certification systems shaped around real food-safety and quality workflows.</h2>
               <div className="capability-grid certification-capabilities">

@@ -66,7 +66,7 @@ export default function AdminLoginPage() {
       <div className="admin-login-card">
         <div className="admin-login-header">
           <Image
-            src="/final_logo_transparent.png"
+            src="/final_team_logo.png"
             alt="Samarth Technoologies Logo"
             width={160}
             height={60}

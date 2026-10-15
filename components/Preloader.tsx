@@ -35,6 +35,7 @@ export function Preloader() {
           width={180} 
           height={130} 
           className="preloader-logo"
+          style={{ height: 'auto' }}
           priority
         />
         <div className="preloader-line">

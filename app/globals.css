@@ -191,6 +191,7 @@ img {
 
 .brand-logo-wordmark {
   width: 120px;
+  height: auto;
   max-height: 72px;
   object-fit: contain;
 }
@@ -208,6 +209,15 @@ img {
   color: var(--accent);
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
+}
+
+.brand-tm {
+  font-size: 0.6em;
+  vertical-align: super;
+  margin-left: 2px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: normal;
 }
 
 .brand-copy small {
@@ -767,20 +777,21 @@ p {
 }
 
 .hero-logo-sigil {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
   display: grid;
   place-items: center;
   background: transparent;
   border: none;
   box-shadow: none;
+  margin: 0 auto;
 }
 
 .hero-logo-sigil img {
-  width: 150px;
+  width: 100%;
   height: auto;
   object-fit: contain;
-  mix-blend-mode: multiply;
 }
 
 @keyframes float-sigil {

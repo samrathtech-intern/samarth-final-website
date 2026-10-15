@@ -20,9 +20,9 @@ export function Footer() {
       <div className="container footer-grid">
         <div className="footer-main-col">
           <div className="footer-brand">
-            <Image src={site.logo} alt={`${site.name} logo`} width={180} height={128} />
+            <Image src={site.logo} alt={`${site.name} logo`} width={180} height={128} style={{ height: 'auto' }} />
             <div>
-              <strong>{site.name}</strong>
+              <strong>{site.name}<span className="brand-tm">™</span></strong>
               <span>{site.tagline}</span>
             </div>
           </div>

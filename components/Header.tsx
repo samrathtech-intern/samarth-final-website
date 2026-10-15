@@ -34,9 +34,9 @@ export function Header() {
 
       <div className="container navbar">
         <Link href="/" className="brand" aria-label={`${site.name} home`}>
-          <Image src={site.logo} alt={`${site.name} logo`} className="brand-logo brand-logo-wordmark" width={200} height={144} priority />
+          <Image src={site.logo} alt={`${site.name} logo`} className="brand-logo brand-logo-wordmark" width={200} height={144} style={{ height: 'auto' }} priority />
           <span className="brand-copy">
-            <strong>{site.name}</strong>
+            <strong>{site.name}<span className="brand-tm">™</span></strong>
             <small>Consultancy • Training • Compliance</small>
           </span>
         </Link>

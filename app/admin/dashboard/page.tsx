@@ -395,7 +395,7 @@ export default function AdminDashboardPage() {
       <aside className="admin-sidebar">
         <div className="admin-sidebar-header">
           <img
-            src="/final_logo_transparent.png"
+            src="/final_team_logo.png"
             alt="Samarth Logo"
             className="admin-sidebar-logo"
           />

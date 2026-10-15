@@ -9,7 +9,7 @@ export const site = {
   owner: 'Mr. Amrendra Mahamuni',
   address:
     'Vijayashree Coop. Housing Society Ltd. SR. No. 129, Flat B-36, Near Global Hospital, Dattawadi, Pune, Maharashtra 411030, India',
-  logo: '/final_logo_transparent.png',
+  logo: '/final_team_logo.png',
   qciMembership: 'ORG/CS/WR/445',
   gst: '27ADCFS4679J1ZI',
   pan: 'ADCFS4679J',
