@@ -317,7 +317,9 @@ export default function AdminDashboardPage() {
           setSubmitting(false);
           return;
         }
-        finalFilename = uploadData.filename;
+        // On Vercel (read-only FS) the upload returns a base64 data URL.
+        // Store the full URL so it can be rendered without a disk path.
+        finalFilename = uploadData.url || uploadData.filename;
       }
 
       const res = await fetch('/api/admin/brands', {
@@ -622,13 +624,13 @@ export default function AdminDashboardPage() {
                     <div key={brand} className="admin-brand-card">
                       <div className="admin-brand-logo-box">
                         <img
-                          src={`/Brands/${brand}`}
-                          alt={brand}
+                          src={brand.startsWith('data:') || brand.startsWith('/') || brand.startsWith('http') ? brand : `/Brands/${brand}`}
+                          alt={brand.startsWith('data:') ? 'brand logo' : brand}
                           className="admin-brand-img"
                           loading="lazy"
                         />
                       </div>
-                      <div className="admin-brand-name">{brand}</div>
+                      <div className="admin-brand-name">{brand.startsWith('data:') ? '(uploaded logo)' : brand}</div>
                       <button
                         className="admin-btn-icon-danger"
                         style={{ width: '100%', justifyContent: 'center' }}
