@@ -1,19 +1,23 @@
 import React from 'react';
 import { getBrands } from '@/lib/admin-store';
 
-// Resolve a brand entry to a usable <img> src.
-// Entries saved before the fix are plain filenames like "clean.png".
-// Entries saved after the fix are full URLs: data:..., /Brands/..., etc.
-function brandSrc(brand: string): string {
-  if (brand.startsWith('data:') || brand.startsWith('/') || brand.startsWith('http')) {
-    return brand;
+// Resolve a brand entry to { name, src }.
+// Supports all storage formats:
+//   "amul.png"                  → plain filename → /Brands/amul.png
+//   "clean.png::data:image/..." → Vercel fallback (filename + base64)
+//   "data:image/..."            → raw base64 (legacy)
+//   "/Brands/amul.png"          → absolute path
+function parseBrand(brand: string): { name: string; src: string } {
+  const sepIdx = brand.indexOf('::data:');
+  if (sepIdx !== -1) {
+    return { name: brand.slice(0, sepIdx), src: brand.slice(sepIdx + 2) };
   }
-  return `/Brands/${brand}`;
-}
-
-function brandAlt(brand: string): string {
-  if (brand.startsWith('data:')) return 'brand logo';
-  return brand.split('.')[0];
+  if (brand.startsWith('data:')) return { name: 'brand logo', src: brand };
+  if (brand.startsWith('/') || brand.startsWith('http')) {
+    const parts = brand.split('/');
+    return { name: parts[parts.length - 1] || brand, src: brand };
+  }
+  return { name: brand.split('.')[0], src: `/Brands/${brand}` };
 }
 
 export function TrustedByMarquee({ brands: customBrands }: { brands?: string[] } = {}) {
@@ -26,17 +30,23 @@ export function TrustedByMarquee({ brands: customBrands }: { brands?: string[] }
       </div>
       <div className="marquee-container">
         <div className="marquee-content">
-          {brands.map((brand, i) => (
-            <div key={i} className="marquee-item">
-              <img src={brandSrc(brand)} alt={brandAlt(brand)} loading="lazy" />
-            </div>
-          ))}
+          {brands.map((brand, i) => {
+            const { name, src } = parseBrand(brand);
+            return (
+              <div key={i} className="marquee-item">
+                <img src={src} alt={name} loading="lazy" />
+              </div>
+            );
+          })}
           {/* Duplicate for infinite scroll */}
-          {brands.map((brand, i) => (
-            <div key={`dup-${i}`} className="marquee-item" aria-hidden="true">
-              <img src={brandSrc(brand)} alt={brandAlt(brand)} loading="lazy" />
-            </div>
-          ))}
+          {brands.map((brand, i) => {
+            const { name, src } = parseBrand(brand);
+            return (
+              <div key={`dup-${i}`} className="marquee-item" aria-hidden="true">
+                <img src={src} alt={name} loading="lazy" />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -11,6 +11,31 @@ type GalleryItem = {
   category: string;
 };
 
+// ── Brand entry parser ──────────────────────────────────────────────────────
+// Entries can be:
+//   "amul.png"                     → plain filename (old, served from /Brands/)
+//   "/Brands/amul.png"             → absolute path
+//   "clean.png::data:image/..."    → Vercel fallback: filename + base64 data URL
+//   "data:image/..."               → raw data URL (legacy, no name)
+function parseBrand(brand: string): { name: string; src: string } {
+  // New format: "filename::data:..."
+  const sepIdx = brand.indexOf('::data:');
+  if (sepIdx !== -1) {
+    return { name: brand.slice(0, sepIdx), src: brand.slice(sepIdx + 2) };
+  }
+  // Raw base64 (no filename saved)
+  if (brand.startsWith('data:')) {
+    return { name: '(uploaded logo)', src: brand };
+  }
+  // Absolute path or http URL
+  if (brand.startsWith('/') || brand.startsWith('http')) {
+    const parts = brand.split('/');
+    return { name: parts[parts.length - 1] || brand, src: brand };
+  }
+  // Plain filename → prefix /Brands/
+  return { name: brand, src: `/Brands/${brand}` };
+}
+
 export default function AdminDashboardPage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<'gallery' | 'brands'>('gallery');
@@ -318,8 +343,14 @@ export default function AdminDashboardPage() {
           return;
         }
         // On Vercel (read-only FS) the upload returns a base64 data URL.
-        // Store the full URL so it can be rendered without a disk path.
-        finalFilename = uploadData.url || uploadData.filename;
+        // Store as "filename::dataUrl" so we can display the real name later.
+        const url: string = uploadData.url || '';
+        const name: string = uploadData.filename || brandFile.name;
+        if (url.startsWith('data:')) {
+          finalFilename = `${name}::${url}`;
+        } else {
+          finalFilename = url || name;
+        }
       }
 
       const res = await fetch('/api/admin/brands', {
@@ -378,9 +409,9 @@ export default function AdminDashboardPage() {
     return matchesCategory && matchesSearch;
   });
 
-  // Filtered brands
+  // Filtered brands — search by display name, not raw entry (avoids base64 noise)
   const filteredBrands = brands.filter((b) =>
-    b.toLowerCase().includes(brandSearch.toLowerCase())
+    parseBrand(b).name.toLowerCase().includes(brandSearch.toLowerCase())
   );
 
   if (loading) {
@@ -620,17 +651,19 @@ export default function AdminDashboardPage() {
                 </div>
               ) : (
                 <div className="admin-brands-grid">
-                  {filteredBrands.map((brand) => (
+                  {filteredBrands.map((brand) => {
+                    const { name, src } = parseBrand(brand);
+                    return (
                     <div key={brand} className="admin-brand-card">
                       <div className="admin-brand-logo-box">
                         <img
-                          src={brand.startsWith('data:') || brand.startsWith('/') || brand.startsWith('http') ? brand : `/Brands/${brand}`}
-                          alt={brand.startsWith('data:') ? 'brand logo' : brand}
+                          src={src}
+                          alt={name}
                           className="admin-brand-img"
                           loading="lazy"
                         />
                       </div>
-                      <div className="admin-brand-name">{brand.startsWith('data:') ? '(uploaded logo)' : brand}</div>
+                      <div className="admin-brand-name">{name}</div>
                       <button
                         className="admin-btn-icon-danger"
                         style={{ width: '100%', justifyContent: 'center' }}
@@ -639,7 +672,8 @@ export default function AdminDashboardPage() {
                         Remove
                       </button>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
